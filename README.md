@@ -55,6 +55,5 @@ Este proyecto forma parte del desarrollo de etapa práctica del SENA, como requi
 <p align="center">
   <img src="public/profile1.jpg" alt="Desarrolladora del proyecto" width="200" style="border-radius: 12px;">
 </p>
-
 Este proyecto fue desarrollado por **Sandra Cadena**, bióloga con enfoque en control biológico, apasionada por los artrópodos y por la tecnología aplicada a la agricultura.
 ---
