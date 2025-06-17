@@ -50,11 +50,9 @@ Este proyecto está dirigido a:
 
 ---
 ## 🙋‍♀️ Sobre la desarrolladora
-
-Este proyecto forma parte del desarrollo de etapa práctica del SENA, como requisito para completar la Tecnología en Análisis y Desarrollo de Software.
 <p align="center">
   <img src="public/profile1.jpg" alt="Desarrolladora del proyecto" width="200" style="border-radius: 12px;">
 </p>
+Este trabajo forma parte de la etapa práctica del SENA, requisito para obtener el título de Tecnóloga en Análisis y Desarrollo de Software.
+Fue desarrollado por Sandra Cadena, bióloga con énfasis en control biológico, apasionada por los artrópodos y la aplicación de la tecnología en la agricultura.
 
-Este proyecto fue desarrollado por **Sandra Cadena**, bióloga con enfoque en control biológico, apasionada por los artrópodos y por la tecnología aplicada a la agricultura.
----
