@@ -44,8 +44,10 @@ Este proyecto está dirigido a:
 - Entidades gubernamentales interesadas en bioeconomía, educación o divulgación científica
 
 ## 🚀 Enlaces clave
-- [🌐 Aplicación web desplegada en Netlify](https://insect-hub.netlify.app/home)  
-- [🔗 API pública de insectos (en desarrollo)](https://en_desarrollo.api)  
+- [🌐 Aplicación web desplegada en Netlify](https://insect-hub.netlify.app/)  
+- <span className="underline">
+  [🔗 API pública de insectos (en desarrollo)]
+  </span> 
 - [📁 Repositorio del proyecto en GitHub](https://github.com/Kdnastone/insect-hub)
 
 ---
@@ -55,4 +57,3 @@ Este proyecto está dirigido a:
 </p>
 Este trabajo forma parte de la etapa práctica del SENA, requisito para obtener el título de Tecnóloga en Análisis y Desarrollo de Software.
 Fue desarrollado por Sandra Cadena, bióloga con énfasis en control biológico, apasionada por los artrópodos y la aplicación de la tecnología en la agricultura.
----
