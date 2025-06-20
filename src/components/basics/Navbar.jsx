@@ -27,7 +27,7 @@ const Navbar = () => {
             alt="CINAT Logo"
             className="h-14 w-14 object-cover rounded-full"
           />
-          <span className="text-xl font-bold text-[#475C22] hidden lg:inline">
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold lg:font-bold text-[#475C22]">
             Centro de Investigación de Artrópodos Terrestres – CINAT
           </span>
         </NavLink>
