@@ -8,7 +8,7 @@ const SpeciesCard = ({ especie, onClick }) => {
     >
       {/* Imagen */}
       <img
-        src={`/src/assets/especies/${especie.imagen}`}
+        src={`/assets/especies/${especie.imagen}`}
         alt={especie.nombreComun}
         className="w-full h-48 object-cover rounded-lg mb-4"
       />
