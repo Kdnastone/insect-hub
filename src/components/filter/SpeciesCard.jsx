@@ -10,7 +10,7 @@ const SpeciesCard = ({ especie, onClick }) => {
       <img
         src={`/assets/especies/${especie.imagen}`}
         alt={especie.nombreComun}
-        className="w-full h-48 object-cover rounded-lg mb-4"
+        className="w-full h-48 object-contain rounded-lg mb-4"
       />
 
       {/* Nombre común y científico */}
