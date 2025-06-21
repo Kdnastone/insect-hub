@@ -160,7 +160,7 @@ export const especies = [
   //  "nombreCientifico": "Pendiente de acuerdo a revisión",
   //  "origen": "Introducido",
   //  "imagen": "coleoptera13.jpg"
- // },
+  //},
   {
     "id": 19,
     "orden": "Coleoptera",
@@ -442,7 +442,7 @@ export const especies = [
   },
   {
     "id": 50,
-    "orden": "Ortoptera",
+    "orden": "Orthoptera",
     "familia": "Gryllidae",
     "nombreComun": "Grillo jamaiquino",
     "nombreCientifico": "Gryllus assimilis",
@@ -451,7 +451,7 @@ export const especies = [
   },
   {
     "id": 51,
-    "orden": "Ortoptera",
+    "orden": "Orthoptera",
     "familia": "Scarabaeidae",
     "nombreComun": "Escarabajo de los carrizos",
     "nombreCientifico": "Golofa porteri",
