@@ -71,7 +71,7 @@ const Gallery = () => {
 
             {/* Imagen grande */}
             <img
-              src={`/src/assets/especies/${imagenSeleccionada.imagen}`}
+              src={`assets/especies/${imagenSeleccionada.imagen}`}
               alt={imagenSeleccionada.nombreComun}
               className="w-full object-contain max-h-[80vh] mx-auto"
             />
