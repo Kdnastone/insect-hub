@@ -13,8 +13,14 @@ export const Team = () => {
           <section className="bg-white shadow-lg rounded-lg p-6">
             <h2 className="text-3xl font-bold text-[#475C22] mb-4">Sobre el Equipo</h2>
             <p className="text-[#475C22] leading-relaxed text-justify mb-4">
-              Este proyecto es impulsado por un equipo interdisciplinario que combina experiencia en biología, control biológico, desarrollo de software y comunicación científica.
-              Nos une el interés por aplicar la tecnología al servicio del conocimiento y la sostenibilidad.
+              Este proyecto es desarrollado por un equipo interdisciplinario con formación en zootecnia, entomología agrícola, desarrollo de software y comunicación científica.<br />
+              Nos une el compromiso de aplicar el conocimiento y la tecnología para promover la sostenibilidad y fortalecer la divulgación científica, 
+              especialmente en torno a los insectos como recurso estratégico para el futuro.<br />
+              Cada integrante aporta una mirada única: desde la comprensión profunda de los sistemas productivos, biológicos y ecológicos, hasta la capacidad de transformar datos en 
+              herramientas interactivas y accesibles. Esta sinergia nos permite crear soluciones digitales que no solo informan, sino que también educan, inspiran y conectan a distintos 
+              públicos: investigadores, productores, estudiantes y ciudadanía en general.<br />
+              Creemos en el valor del trabajo colaborativo, en la ciencia abierta y en la importancia de visibilizar la biodiversidad como un activo bioeconómico y cultural. <br />
+              Es por ello que *Insect Hub* no es solo una plataforma tecnológica, también es una propuesta para acercar la entomología al presente y futuro de nuestras comunidades.
             </p>
             <p className="text-[#475C22] leading-relaxed text-justify mb-6">
               Las personas que conforman este equipo poseen habilidades en análisis de datos, diseño de interfaces, gestión de información biológica y desarrollo de aplicaciones web.
