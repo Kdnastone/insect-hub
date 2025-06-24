@@ -22,10 +22,6 @@ export const Team = () => {
               Creemos en el valor del trabajo colaborativo, en la ciencia abierta y en la importancia de visibilizar la biodiversidad como un activo bioeconómico y cultural. <br />
               Es por ello que <strong>Insect Hub</strong> no es solo una plataforma tecnológica, también es una propuesta para acercar la entomología al presente y futuro de nuestras comunidades.
             </p>
-            <p className="text-[#475C22] leading-relaxed text-justify mb-6">
-              Las personas que conforman este equipo poseen habilidades en análisis de datos, diseño de interfaces, gestión de información biológica y desarrollo de aplicaciones web.
-              La sección dedicada a mostrar cada perfil está en construcción, pero pronto podrás conocer a quienes están detrás de esta iniciativa.
-            </p>
 
             {/* Imagen temporal del equipo */}
             <div className="flex justify-center">
