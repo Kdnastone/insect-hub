@@ -333,15 +333,6 @@ export const especies = [
     "imagen": "hymenoptera09.jpg"
   },
   {
-    "id": 38,
-    "orden": "Hymenoptera",
-    "familia": "Apidae",
-    "nombreComun": "Abeja mielera",
-    "nombreCientifico": "Apis mellifera",
-    "origen": "Introducido",
-    "imagen": "hymenoptera10.jpg"
-  },
-  {
     "id": 39,
     "orden": "Lepidoptera",
     "familia": "Crambidae",
