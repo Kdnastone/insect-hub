@@ -57,9 +57,9 @@ export default function News() {
 
         {tab === "eventos" && (
           <div className="border rounded-xl p-4 shadow-sm">
-            <h2 className="font-semibold text-lg text-green-800">Foro Nacional de Zoocría 2025</h2>
-            <p className="text-sm text-gray-600 mt-2">Agosto 20, 2025 · Universidad Nacional de Colombia</p>
-            <p className="text-sm text-gray-600">Discusión sobre regulación, producción y sostenibilidad en la cría de insectos.</p>
+            <h2 className="font-semibold text-lg text-green-800">Presentación Avances Normativos 2025</h2>
+            <p className="text-sm text-gray-600 mt-2">Agosto 22, 2025 · Universidad Nacional de Colombia</p>
+            <p className="text-sm text-gray-600">Discusión sobre el avance en la regulación, producción y aplicación de algunos insectos.</p>
           </div>
         )}
 
