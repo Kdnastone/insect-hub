@@ -25,12 +25,31 @@ const Gallery = () => {
     return coincideOrden && coincideOrigen;
   });
 
-  // Combina datos al hacer clic en tarjeta
+  // Combina datos al hacer clic en tarjeta - CORREGIDO PARA PRESERVAR IMAGEN
   const handleCardClick = (especie) => {
-    const fichaExtra = fichas.find(f => 
-      f.nombreCientifico.trim().toLowerCase() === especie.nombreCientifico.trim().toLowerCase()
-    );
-    const especieCompleta = { ...especie, ...fichaExtra };
+    console.log('Especie clickeada:', especie);
+    console.log('Todas las fichas:', fichas);
+    console.log('Buscando:', especie.nombreCientifico.trim().toLowerCase());
+    
+    const fichaExtra = fichas.find(f => {
+      // Eliminar etiquetas HTML de ambos nombres para comparar
+      const fichaName = f.nombreCientifico.replace(/<[^>]*>/g, '').trim().toLowerCase();
+      const especieName = especie.nombreCientifico.replace(/<[^>]*>/g, '').trim().toLowerCase();
+      console.log('Comparando:', fichaName, '===', especieName);
+      return fichaName === especieName;
+    });
+    
+    console.log('Ficha encontrada:', fichaExtra);
+    
+    // importar la imagen de la especie
+    const especieCompleta = { 
+      ...fichaExtra,  // Primero los datos completos de fichas.js
+      ...especie,     // Luego los datos básicos de especies.js (incluyendo imagen)
+      id: especie.id  // Asegurar que mantenga el ID original
+    };
+    
+    console.log('Especie completa:', especieCompleta);
+    console.log('Imagen final:', especieCompleta.imagen);
     setEspecieSeleccionada(especieCompleta);
   };
 
