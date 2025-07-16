@@ -1,29 +1,41 @@
-//Importar los componentes requeridos
+//Importar React y hooks necesarios
 import { useState } from "react";
 import { especies } from "../../data/especies";
+import { fichas } from "../../data/fichas";
 import SpeciesCard from "./SpeciesCard";
 import FilterMenu from "./FilterMenu";
+import SpeciesModal from "./SpeciesModal";
 
 const Gallery = () => {
-  // Estados para los filtros
+  // Filtros
   const [ordenSeleccionado, setOrdenSeleccionado] = useState("Todos");
   const [origenSeleccionado, setOrigenSeleccionado] = useState("Todos");
-  const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
 
-  // Extrae órdenes únicos desde los datos
+  // Estado del modal
+  const [especieSeleccionada, setEspecieSeleccionada] = useState(null);
+
+  // Opciones únicas
   const ordenesUnicos = [...new Set(especies.map(e => e.orden))];
   const origenesUnicos = [...new Set(especies.map(e => e.origen))];
 
-  // Aplica filtros según selección
+  // Filtra especies según selección
   const especiesFiltradas = especies.filter((e) => {
     const coincideOrden = ordenSeleccionado === "Todos" || e.orden === ordenSeleccionado;
     const coincideOrigen = origenSeleccionado === "Todos" || e.origen === origenSeleccionado;
     return coincideOrden && coincideOrigen;
   });
 
+  // Combina datos al hacer clic en tarjeta
+  const handleCardClick = (especie) => {
+    const fichaExtra = fichas.find(f => 
+      f.nombreCientifico.trim().toLowerCase() === especie.nombreCientifico.trim().toLowerCase()
+    );
+    const especieCompleta = { ...especie, ...fichaExtra };
+    setEspecieSeleccionada(especieCompleta);
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen px-4 py-10">
-      {/* Título */}
       <h1 className="text-4xl text-center text-[#475C22] font-bold mb-6">
         Especies en Consideración Normativa
       </h1>
@@ -38,53 +50,23 @@ const Gallery = () => {
         setSelectedOrigin={setOrigenSeleccionado}
       />
 
-      {/* Renderizado de tarjetas, Al hacer clic se abre el modal */}
+      {/* Tarjetas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {especiesFiltradas.map((especie) => (
           <SpeciesCard
-            key={especie.id}
+            key={especie.nombreCientifico}
             especie={especie}
-            onClick={() => setImagenSeleccionada(especie)}
+            onClick={() => handleCardClick(especie)}
           />
         ))}
       </div>
 
-      {/* Modal para mostrar imagen grande */}
-      {imagenSeleccionada && (
-        <div
-         // Cierra modal al hacer clic fuera
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
-          onClick={() => setImagenSeleccionada(null)}
-        >
-          <div
-             // Evita que clics dentro cierren el modal
-            className="bg-white rounded-lg p-4 max-w-3xl w-full relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Botón para cerrar */}
-            <button
-              className="absolute top-2 right-2 text-gray-600 hover:text-black text-xl"
-              onClick={() => setImagenSeleccionada(null)}
-            >
-              ✕
-            </button>
-
-            {/* Imagen grande */}
-            <img
-              src={`assets/especies/${imagenSeleccionada.imagen}`}
-              alt={imagenSeleccionada.nombreComun}
-              className="w-full object-contain max-h-[80vh] mx-auto"
-            />
-
-            {/* Nombre común y científico */}
-            <h2 className="text-center text-2xl font-bold text-[#475C22] mt-4">
-              {imagenSeleccionada.nombreComun}
-            </h2>
-            <p className="text-center italic text-gray-600">
-              {imagenSeleccionada.nombreCientifico}
-            </p>
-          </div>
-        </div>
+      {/* Modal */}
+      {especieSeleccionada && (
+        <SpeciesModal
+          especie={especieSeleccionada}
+          onClose={() => setEspecieSeleccionada(null)}
+        />
       )}
     </div>
   );

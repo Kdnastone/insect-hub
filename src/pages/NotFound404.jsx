@@ -1,5 +1,5 @@
 
-import ima_08 from '../assets/map.jpeg';
+import ima_08 from '../assets/map.png';
 
 export const NotFound404 = () => {
   return (
@@ -13,7 +13,7 @@ export const NotFound404 = () => {
       <p className="text-xl text-gray-600 mb-6">Página no encontrada</p>
       <a
         href="/"
-        className="px-6 py-3 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-500 transition"
+        className="px-10 py-4 bg-green-800 text-white rounded-lg hover:bg-[#79a72a] transition-colors text-xl"
       >
         Volver al inicio
       </a>

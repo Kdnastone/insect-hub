@@ -1,6 +1,7 @@
+
 import aboutImagen from '../assets/team/about01.jpg';
 
-export const About = () => {
+export default function QuienesSomos() {
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="container mx-auto px-4 text-center py-10 text-[#475C22]">
@@ -50,4 +51,3 @@ export const About = () => {
   );
 };
 
-export default About;
