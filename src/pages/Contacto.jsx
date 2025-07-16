@@ -7,9 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Contacto() {
   const [formData, setFormData] = useState({
-    nombre: "",
-    correo: "",
-    telefono: "",
     asunto: "",
     mensaje: "",
   });
@@ -19,8 +16,6 @@ export default function Contacto() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.nombre.trim()) newErrors.nombre = true;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.correo)) newErrors.correo = true;
     if (!formData.asunto.trim()) newErrors.asunto = true;
     if (!formData.mensaje.trim()) newErrors.mensaje = true;
     setErrors(newErrors);
@@ -40,13 +35,11 @@ export default function Contacto() {
 
     const mailto = `mailto:cinat_fmvzbog@unal.edu.co?subject=${encodeURIComponent(
       formData.asunto
-    )}&body=${encodeURIComponent(
-      `Nombre: ${formData.nombre}\nCorreo: ${formData.correo}\nTeléfono: ${formData.telefono}\n\nMensaje:\n${formData.mensaje}`
-    )}`;
+    )}&body=${encodeURIComponent(formData.mensaje)}`;
 
     window.open(mailto, "_blank");
     toast.success("¡Correo listo para enviar!");
-    setFormData({ nombre: "", correo: "", telefono: "", asunto: "", mensaje: "" });
+    setFormData({ asunto: "", mensaje: "" });
     setErrors({});
   };
 
