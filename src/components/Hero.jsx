@@ -44,7 +44,7 @@ useEffect(() => {
             Investigación, conservación y uso sostenible de insectos en Colombia
 
 
-        {/* llamar a Button codificado*/}"
+        {/* llamar a Button codificado*/}
           </p>
           <BotonEscarabajo />
         </div>

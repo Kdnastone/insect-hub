@@ -47,7 +47,7 @@ export default function Contacto() {
     <section className="min-h-screen bg-green-50 p-6">
       <h2 className="text-3xl font-bold mb-6 text-green-900">Contáctanos</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="flex flex-col">
+        <div className="md:col-span-2 flex flex-col">
           <label className="font-semibold">Asunto *</label>
           <input
             name="asunto"

@@ -50,7 +50,7 @@ export default function News() {
           <div className="border rounded-xl p-4 shadow-sm">
             <h2 className="font-semibold text-lg text-green-800">Análisis normativo para la cría de insectos</h2>
             <p className="text-sm text-gray-600 mt-2">
-              Propuesta regulatoria para categorizar especies y facilitar el marco legal de producción insectil.
+              Propuesta regulatoria para categorizar especies y facilitar el marco legal de producción de insectos.
             </p>
           </div>
         )}
@@ -59,7 +59,7 @@ export default function News() {
           <div className="border rounded-xl p-4 shadow-sm">
             <h2 className="font-semibold text-lg text-green-800">Presentación Avances Normativos 2025</h2>
             <p className="text-sm text-gray-600 mt-2">Agosto 22, 2025 · Universidad Nacional de Colombia</p>
-            <p className="text-sm text-gray-600">Discusión sobre el avance en la regulación, producción y aplicación de algunos insectos.</p>
+            <p className="text-sm text-gray-600">Presentación de los avances en la regulación, producción y aplicación de algunos insectos en Colombia.</p>
           </div>
         )}
 
