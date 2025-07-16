@@ -46,7 +46,7 @@ const SpeciesModal = ({ especie, onClose }) => {
           {/* Contenido organizado */}
           <div className="space-y-6">
             
-            {/* Clasificación Taxonómica */}
+            {/* Clasificación Taxonómic */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-indigo-500">
               <h3 className="text-lg font-bold text-indigo-700 mb-3 flex items-center gap-2">
                 <span>🔬</span> Clasificación Taxonómica
