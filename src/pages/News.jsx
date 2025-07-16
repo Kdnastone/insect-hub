@@ -66,7 +66,7 @@ export default function News() {
         {tab === "publicaciones" && (
           <div className="border rounded-xl p-4 shadow-sm">
             <h2 className="font-semibold text-lg text-green-800">Estado del arte de Tenebrio molitor en Colombia</h2>
-            <p className="text-sm text-gray-600 mt-2">Publicado en Revista Colombiana de Entomología (2024).</p>
+            <p className="text-sm text-gray-600 mt-2">Publicado en .</p>
           </div>
         )}
       </div>
