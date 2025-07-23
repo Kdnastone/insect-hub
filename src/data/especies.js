@@ -149,7 +149,7 @@ export const especies = [
     "familia": "Tenebrionidae",
     "nombreComun": "Gusano rey",
     "nombreCientifico": "Zophobas atratus",
-    "origen": "Introducido",
+    "origen": "Nativo",
     "imagen": "coleoptera12.jpg"
   },
   //{
