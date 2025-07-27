@@ -324,47 +324,48 @@ const SpeciesModal = ({ especie, onClose }) => {
             </div>
 
             {/* Peligros Sanitarios */}
-            {especie.peligroSanitario && (
-              <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-red-500">
-                <h3 className="text-base sm:text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
-                  <span>⚠️</span> Peligros Sanitarios
-                </h3>
-                <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
-                  __html: especie.peligroSanitario 
-                }} />
-              </div>
-            )}
+            {/* Peligros Sanitarios */}
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-red-500">
+              <h3 className="text-base sm:text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
+                <span>⚠️</span> Peligros Sanitarios
+              </h3>
+              <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
+                __html: (especie.peligroSanitario && especie.peligroSanitario.trim() !== '') 
+                  ? especie.peligroSanitario 
+                  : 'No hay información de peligros sanitarios disponible' 
+              }} />
+            </div>
 
             {/* Peligros Medioambientales */}
-            {especie.peligrosMedioambientales && (
-              <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-orange-500">
-                <h3 className="text-base sm:text-lg font-bold text-orange-700 mb-3 flex items-center gap-2">
-                  <span>🌿</span> Peligros Medioambientales
-                </h3>
-                <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
-                  __html: especie.peligrosMedioambientales 
-                }} />
-              </div>
-            )}
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-orange-500">
+              <h3 className="text-base sm:text-lg font-bold text-orange-700 mb-3 flex items-center gap-2">
+                <span>🌿</span> Peligros Medioambientales
+              </h3>
+              <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
+                __html: (especie.peligrosMedioambientales && especie.peligrosMedioambientales.trim() !== '') 
+                  ? especie.peligrosMedioambientales 
+                  : 'No hay información de peligros medioambientales disponible' 
+              }} />
+            </div>
 
             {/* Medidas de Manejo */}
-            {especie.medidasManejo && (
-              <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-gray-500">
-                <h3 className="text-base sm:text-lg font-bold text-gray-700 mb-3 flex items-center gap-2">
-                  <span>🛡️</span> Medidas de Manejo
-                </h3>
-                <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
-                  __html: especie.medidasManejo 
-                }} />
-              </div>
-            )}
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-gray-500">
+              <h3 className="text-base sm:text-lg font-bold text-gray-700 mb-3 flex items-center gap-2">
+                <span>🛡️</span> Medidas de Manejo
+              </h3>
+              <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
+                __html: (especie.medidasManejo && especie.medidasManejo.trim() !== '') 
+                  ? especie.medidasManejo 
+                  : 'No hay información de medidas de manejo disponible' 
+              }} />
+            </div>
 
             {/* Enlaces de Referencia */}
-            {especie.enlaceGBIF && (
-              <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
-                <h3 className="text-base sm:text-lg font-bold text-blue-700 mb-3 flex items-center gap-2">
-                  <span>🔗</span> Enlaces de Referencia
-                </h3>
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
+              <h3 className="text-base sm:text-lg font-bold text-blue-700 mb-3 flex items-center gap-2">
+                <span>🔗</span> Enlaces de Referencia
+              </h3>
+              {especie.enlaceGBIF ? (
                 <a 
                   href={especie.enlaceGBIF} 
                   target="_blank" 
@@ -373,8 +374,12 @@ const SpeciesModal = ({ especie, onClose }) => {
                 >
                   Ver en GBIF <span>↗</span>
                 </a>
-              </div>
-            )}
+              ) : (
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                  No hay enlaces de referencia disponibles
+                </p>
+              )}
+            </div>
 
           </div>
         </div>

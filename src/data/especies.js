@@ -337,7 +337,7 @@ export const especies = [
     "orden": "Lepidoptera",
     "familia": "Crambidae",
     "nombreCientifico": "Diatraea saccharalis",
-    "nombreComun": "Taladro de la caña de azúcar",
+    "nombreComun": "Taladrador de la caña de azúcar",
     "origen": "Nativa",
     "imagen": "lepidoptera01.jpg"
   },
