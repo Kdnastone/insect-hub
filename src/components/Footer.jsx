@@ -7,56 +7,54 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
-  // Componente de pie de página
-  // Contiene información institucional, contacto y enlaces a redes sociales
   return (
-    <footer className="fixed bottom-0 left-0 w-full bg-green-800 text-white text-center z-50">
-      <div className="w-full max-w-screen-xl mx-auto px-4">
-        {/* Contenedor principal en columna en móviles y fila en pantallas medianas */}
-        <div className="flex flex-col sm:flex-row sm:justify-between items-center text-center sm:text-left gap-6">
+    /* Responsive footer */
+    <footer className="fixed bottom-0 left-0 w-full bg-green-800 text-white py-2 sm:py-3 md:py-4 z-40">
+      <div className="w-full max-w-screen-xl mx-auto px-2 sm:px-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-4 md:gap-6">
 
           {/* Información institucional */}
-          <div>
-            <p className="text-xl font-bold">CINAT</p>
-            <p className="text-sm">
+          <div className="text-center sm:text-left">
+            <p className="text-sm sm:text-lg md:text-xl font-bold">CINAT</p>
+            <p className="text-xs sm:text-sm">
               &copy; {new Date().getFullYear()} - Todos los derechos reservados.
             </p>
           </div>
 
           {/* Información de contacto */}
-          <div className="flex items-center gap-2">
-            <FaEnvelope />
-            <span className="text-sm">cinat_fmvzbog@unal.edu.co</span>
+          <div className="flex items-center gap-1 sm:gap-2 text-center">
+            <FaEnvelope className="text-xs sm:text-sm md:text-base" />
+            <span className="text-xs sm:text-sm break-all">cinat_fmvzbog@unal.edu.co</span>
           </div>
 
           {/* Redes sociales */}
-          <div className="flex gap-6">
+          <div className="flex gap-3 sm:gap-4 md:gap-6">
             <a
               href="https://github.com/Kdnastone/insect-hub"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#79a72a]"
+              className="hover:text-[#79a72a] transition-colors"
               title="GitHub del proyecto"
             >
-              <FaGithub size={24} />
+              <FaGithub className="text-sm sm:text-lg md:text-xl" />
             </a>
             <a
               href="https://www.facebook.com/CinatUN/?locale=es_LA"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#79a72a]"
+              className="hover:text-[#79a72a] transition-colors"
               title="Facebook de CINAT"
             >
-              <FaFacebook size={24} />
+              <FaFacebook className="text-sm sm:text-lg md:text-xl" />
             </a>
             <a
               href="https://www.instagram.com/insectariounal/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#79a72a]"
+              className="hover:text-[#79a72a] transition-colors"
               title="Instagram de CINAT"
             >
-              <FaInstagram size={24} />
+              <FaInstagram className="text-sm sm:text-lg md:text-xl" />
             </a>
           </div>
         </div>

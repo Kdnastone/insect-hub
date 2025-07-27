@@ -4,20 +4,33 @@ import { Link } from "react-router-dom";
 import CINAT from "../assets/CINAT.png"; 
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // <--- AQUÍ
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-green-800 text-white px-6 py-4 flex flex-col md:flex-row justify-between items-center shadow-md fixed top-0 w-full z-50">
-      {/* Logo + título */}
-      <div className="flex items-center justify-between w-full md:w-auto">
-        <div className="flex items-center space-x-3">
-          <img src={CINAT} alt="Logo CINAT UNAL" className="h-10 w-auto" />
-          <h1 className="text-xl font-bold">CINAT UNAL</h1>
+    <nav className="bg-green-800 text-white px-4 sm:px-6 py-3 shadow-md fixed top-0 w-full z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        
+        {/* Logo + título */}
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <img src={CINAT} alt="Logo CINAT UNAL" className="h-8 sm:h-10 w-auto" />
+          <h1 className="text-lg sm:text-xl font-bold">CINAT UNAL</h1>
         </div>
 
-        {/* Botón hamburguesa visible solo en móviles */}
+        {/* Menú desktop - oculto en móvil */}
+        <ul className="hidden md:flex items-center space-x-6 text-sm lg:text-base">
+          <li><Link to="/" className="hover:text-green-200 transition-colors">Inicio</Link></li>
+          <li><Link to="/quienes-somos" className="hover:text-green-200 transition-colors">Quiénes Somos</Link></li>
+          <li><Link to="/team" className="hover:text-green-200 transition-colors">Equipo</Link></li>
+          <li><Link to="/news" className="hover:text-green-200 transition-colors">Noticias</Link></li>
+          <li><Link to="/especies" className="hover:text-green-200 transition-colors">Especies</Link></li>
+          <li><Link to="/api" className="hover:text-green-200 transition-colors">API</Link></li>
+          <li><Link to="/recursos" className="hover:text-green-200 transition-colors">Recursos</Link></li>
+          <li><Link to="/project" className="hover:text-green-200 transition-colors">Proyecto</Link></li>
+        </ul>
+
+        {/* Botón hamburguesa: visible solo en móvil y pantallas pequeñas */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-white focus:outline-none p-2"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
@@ -36,21 +49,24 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Menú de navegación */}
-      <ul
-        className={`w-full md:w-auto flex-col md:flex-row md:flex md:items-center md:space-x-6 text-sm mt-4 md:mt-0 ${
-          isOpen ? "flex" : "hidden"
-        }`}
-      >
-        <li><Link to="/">Inicio</Link></li>
-        <li><Link to="/quienes-somos">Quiénes Somos</Link></li>
-        <li><Link to="/team">Equipo</Link></li>
-        <li><Link to="/news">Noticias</Link></li>
-        <li><Link to="/especies">Especies de Interés</Link></li>
-        <li><Link to="/api">API</Link></li>
-        <li><Link to="/recursos">Normatividad</Link></li>
-        <li><Link to="/project">Sobre la página</Link></li>
-      </ul>
+      {/* Menú móvil desplegable */}
+      {isOpen && (
+        // Contenedor del menú móvil, se agrega pb-16 en el contenedor y pb-8 en la lista
+        // asegurando que haya suficiente espacio en la parte inferior del menú móvil 
+        // para evitar que la barra de navegación del navegador tape las opciones cuando aparece al hacer hover.
+        <div className="md:hidden mt-4 pb-16 border-t border-green-700 max-h-screen overflow-y-auto">
+          <ul className="flex flex-col space-y-3 pt-4 text-sm pb-8">
+            <li><Link to="/" className="block py-2  hover:bg-green-400  hover:text-black transition-colors" onClick={() => setIsOpen(false)}>Inicio</Link></li>
+            <li><Link to="/quienes-somos" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Quiénes Somos</Link></li>
+            <li><Link to="/team" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Equipo</Link></li>
+            <li><Link to="/news" className="block py-2 hover:bg-green-400  hover:text-black transition-colors" onClick={() => setIsOpen(false)}>Noticias</Link></li>
+            <li><Link to="/especies" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Especies de Interés</Link></li>
+            <li><Link to="/api" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>API</Link></li>
+            <li><Link to="/recursos" className="block py-2 hover:bg-green-400  hover:text-black transition-colors" onClick={() => setIsOpen(false)}>Normatividad</Link></li>
+            <li><Link to="/project" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Sobre la página</Link></li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

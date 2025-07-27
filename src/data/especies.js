@@ -3,450 +3,468 @@ export const especies = [
     "id": 1,
     "orden": "Blattodea",
     "familia": "Blaberidae",
-    "nombreComun": "Cucaracha discoidal",
-    "nombreCientifico": "Blaberus discoidalis",
-    "origen": "Nativo",
+    "nombreComun": "Blaberus discoidalis",
+    "nombreCientifico": "Cucaracha discoidal",
+    "origen": "Nativa",
     "imagen": "blattodea01.jpg"
   },
   {
     "id": 2,
     "orden": "Blattodea",
     "familia": "Blaberidae",
-    "nombreComun": "Cucaracha gigante",
-    "nombreCientifico": "Blaberus giganteus",
-    "origen": "Nativo",
+    "nombreComun": "Blaberus giganteus",
+    "nombreCientifico": "Cucaracha gigante",
+    "origen": "Nativa",
     "imagen": "blattodea02.jpg"
   },
   {
     "id": 3,
     "orden": "Blattodea",
     "familia": "Lycidae",
-    "nombreComun": "Cucaracha luminiscente",
-    "nombreCientifico": "Lucihormetica subcincta",
-    "origen": "Nativo",
+    "nombreComun": "Lucihormetica subcincta",
+    "nombreCientifico": "Cucaracha luminiscente",
+    "origen": "Nativa",
     "imagen": "blattodea03.jpg"
   },
   {
     "id": 4,
     "orden": "Blattodea",
     "familia": "Blaberidae",
-    "nombreComun": "Dubia",
-    "nombreCientifico": "Blaptica dubia",
-    "origen": "Introducido",
+    "nombreComun": "Blaptica dubia",
+    "nombreCientifico": "Dubia",
+    "origen": "Introducida",
     "imagen": "blattodea04.jpg"
   },
   {
     "id": 5,
     "orden": "Blattodea",
     "familia": "Blattidae",
-    "nombreComun": "Cucaracha americana",
-    "nombreCientifico": "Periplaneta americana",
-    "origen": "Introducido",
+    "nombreComun": "Periplaneta americana",
+    "nombreCientifico": "Cucaracha americana",
+    "origen": "Introducida",
     "imagen": "blattodea05.jpg"
   },
   {
     "id": 6,
-    "orden": "Coleoptera",
-    "familia": "Cerambycidae",
-    "nombreComun": "Aserrador imperial",
-    "nombreCientifico": "Enoplocerus armillatus",
-    "origen": "Nativo",
-    "imagen": "coleoptera01.jpg"
+    "orden": "Blattodea",
+    "familia": "Blaberidae",
+    "nombreComun": "Gromphadorhina portentosa",
+    "nombreCientifico": "Cucaracha de Madagascar Silvadora",
+    "origen": "Introducida",
+    "imagen": "blattodea06.jpg"
   },
   {
     "id": 7,
     "orden": "Coleoptera",
-    "familia": "Curculionidae",
-    "nombreComun": "Picudo negro, mojojoy",
-    "nombreCientifico": "Rhynchophorus palmarum",
-    "origen": "Nativo",
-    "imagen": "coleoptera02.jpg"
+    "familia": "Cerambycidae",
+    "nombreComun": "Enoplocerus armillatus",
+    "nombreCientifico": "Aserrador imperial",
+    "origen": "Nativa",
+    "imagen": "coleoptera01.jpg"
   },
   {
     "id": 8,
     "orden": "Coleoptera",
-    "familia": "Lucanidae",
-    "nombreComun": "Escarabajo ciervo",
-    "nombreCientifico": "Cantharolethrus luxerii",
-    "origen": "Nativo",
-    "imagen": "coleoptera03.jpg"
+    "familia": "Curculionidae",
+    "nombreComun": "Rhynchophorus palmarum",
+    "nombreCientifico": "Picudo negro, mojojoy",
+    "origen": "Nativa",
+    "imagen": "coleoptera02.jpg"
   },
   {
     "id": 9,
     "orden": "Coleoptera",
-    "familia": "Passalidae",
-    "nombreComun": "Escarabajo de la madera podrida",
-    "nombreCientifico": "Passalus interstitialis",
-    "origen": "Nativo",
-    "imagen": "coleoptera04.jpg"
+    "familia": "Lucanidae",
+    "nombreComun": "Cantharolethrus luxerii",
+    "nombreCientifico": "Escarabajo ciervo",
+    "origen": "Nativa",
+    "imagen": "coleoptera03.jpg"
   },
   {
     "id": 10,
     "orden": "Coleoptera",
-    "familia": "Scarabaeidae",
-    "nombreComun": "Escarabajo rinoceronte",
-    "nombreCientifico": "Ancognatha scarabaeoides",
-    "origen": "Nativo",
-    "imagen": "coleoptera05.jpg"
+    "familia": "Passalidae",
+    "nombreComun": "Passalus interstitialis",
+    "nombreCientifico": "Escarabajo de la madera podrida",
+    "origen": "Nativa",
+    "imagen": "coleoptera04.jpg"
   },
   {
     "id": 11,
     "orden": "Coleoptera",
     "familia": "Scarabaeidae",
-    "nombreComun": "Escarabajo joya",
-    "nombreCientifico": "Paranomala inconstans",
-    "origen": "Nativo",
-    "imagen": "coleoptera06.jpg"
+    "nombreComun": "Ancognatha scarabaeoides",
+    "nombreCientifico": "Escarabajo rinoceronte",
+    "origen": "Nativa",
+    "imagen": "coleoptera05.jpg"
   },
   {
     "id": 12,
     "orden": "Coleoptera",
     "familia": "Scarabaeidae",
-    "nombreComun": "Escarabajo hércules",
-    "nombreCientifico": "Dynastes occidentalis",
-    "origen": "Nativo",
-    "imagen": "coleoptera07.jpg"
+    "nombreComun": "Paranomala inconstans",
+    "nombreCientifico": "Escarabajo joya",
+    "origen": "Nativa",
+    "imagen": "coleoptera06.jpg"
   },
   {
     "id": 13,
     "orden": "Coleoptera",
     "familia": "Scarabaeidae",
-    "nombreComun": "Escarabajo neptuno",
-    "nombreCientifico": "Dynastes neptunus",
-    "origen": "Nativo",
-    "imagen": "coleoptera08.jpg"
+    "nombreComun": "Dynastes occidentalis",
+    "nombreCientifico": "Escarabajo hércules",
+    "origen": "Nativa",
+    "imagen": "coleoptera07.jpg"
   },
   {
     "id": 14,
     "orden": "Coleoptera",
     "familia": "Scarabaeidae",
-    "nombreComun": "Escarabajo elefante",
-    "nombreCientifico": "Megasoma elephas",
-    "origen": "Nativo",
-    "imagen": "coleoptera09.jpg"
+    "nombreComun": "Dynastes neptunus",
+    "nombreCientifico": "Escarabajo neptuno",
+    "origen": "Nativa",
+    "imagen": "coleoptera08.jpg"
   },
   {
     "id": 15,
     "orden": "Coleoptera",
     "familia": "Scarabaeidae",
-    "nombreComun": "Escarabajo Pelotero Diablo Verde",
-    "nombreCientifico": "Oxysternon conspicillatum",
-    "origen": "Nativo",
-    "imagen": "coleoptera10.jpg"
+    "nombreComun": "Megasoma elephas",
+    "nombreCientifico": "Escarabajo elefante",
+    "origen": "Nativa",
+    "imagen": "coleoptera09.jpg"
   },
   {
     "id": 16,
     "orden": "Coleoptera",
     "familia": "Scarabaeidae",
-    "nombreComun": "chisa, gusano mojojoy",
-    "nombreCientifico": "Phyllophaga obsoleta",
-    "origen": "Nativo",
-    "imagen": "coleoptera11.jpg"
+    "nombreComun": "Oxysternon conspicillatum",
+    "nombreCientifico": "Escarabajo Pelotero Diablo Verde",
+    "origen": "Nativa",
+    "imagen": "coleoptera10.jpg"
   },
   {
     "id": 17,
     "orden": "Coleoptera",
+    "familia": "Scarabaeidae",
+    "nombreComun": "Phyllophaga obsoleta",
+    "nombreCientifico": "chisa, gusano mojojoy",
+    "origen": "Nativa",
+    "imagen": "coleoptera11.jpg"
+  },
+  {
+    "id": 18,
+    "orden": "Coleoptera",
     "familia": "Tenebrionidae",
-    "nombreComun": "Gusano rey",
-    "nombreCientifico": "Zophobas atratus",
-    "origen": "Nativo",
+    "nombreComun": "Zophobas atratus",
+    "nombreCientifico": "Gusano rey",
+    "origen": "Nativa",
     "imagen": "coleoptera12.jpg"
   },
-  //{
-  //  "id": 18,
-  //  "orden": "Coleoptera",
-  //  "familia": "Tenebrionidae",
-  //  "nombreComun": "Gusano rey",
-  //  "nombreCientifico": "Pendiente de acuerdo a revisión",
-  //  "origen": "Introducido",
-  //  "imagen": "coleoptera13.jpg"
-  //},
   {
     "id": 19,
     "orden": "Coleoptera",
     "familia": "Curculionidae",
-    "nombreComun": "Broca del café",
-    "nombreCientifico": "Hypothenemus hampei",
-    "origen": "Introducido",
+    "nombreComun": "Hypothenemus hampei",
+    "nombreCientifico": "Broca del café",
+    "origen": "Introducida",
     "imagen": "coleoptera14.jpg"
   },
   {
     "id": 20,
     "orden": "Coleoptera",
     "familia": "Tenebrionidae",
-    "nombreComun": "Gorgojo de la cama de los pollos",
-    "nombreCientifico": "Alphitobius diaperinus",
-    "origen": "Introducido",
+    "nombreComun": "Alphitobius diaperinus",
+    "nombreCientifico": "Gorgojo de la cama de los pollos",
+    "origen": "Introducida",
     "imagen": "coleoptera15.jpg"
   },
   {
     "id": 21,
     "orden": "Coleoptera",
     "familia": "Tenebrionidae",
-    "nombreComun": "Gusano de la harina",
-    "nombreCientifico": "Tenebrio molitor",
-    "origen": "Introducido",
+    "nombreComun": "Tenebrio molitor",
+    "nombreCientifico": "Gusano de la harina",
+    "origen": "Introducida",
     "imagen": "coleoptera16.jpg"
   },
   {
     "id": 22,
     "orden": "Coleoptera",
     "familia": "Tenebrionidae",
-    "nombreComun": "Gorgojo chino",
-    "nombreCientifico": "Ulomoides dermestoides",
-    "origen": "Introducido",
+    "nombreComun": "Ulomoides dermestoides",
+    "nombreCientifico": "Gorgojo chino",
+    "origen": "Introducida",
     "imagen": "coleoptera17.jpg"
   },
   {
     "id": 23,
     "orden": "Diptera",
     "familia": "Stratiomyidae",
-    "nombreComun": "Mosca soldado negra",
-    "nombreCientifico": "Hermetia illucens",
-    "origen": "Nativo",
+    "nombreComun": "Hermetia illucens",
+    "nombreCientifico": "Mosca soldado negra",
+    "origen": "Nativa",
     "imagen": "diptera01.jpg"
   },
   {
     "id": 24,
     "orden": "Diptera",
     "familia": "Calliphoridae",
-    "nombreComun": "Common green bottle fly",
-    "nombreCientifico": "Lucilia sericata",
-    "origen": "Introducido",
+    "nombreComun": "Lucilia sericata",
+    "nombreCientifico": "Common green bottle fly",
+    "origen": "Introducida",
     "imagen": "diptera02.jpg"
   },
   {
     "id": 25,
     "orden": "Diptera",
     "familia": "Drosophilidae",
-    "nombreComun": "Mosca de la fruta",
-    "nombreCientifico": "Drosophila melanogaster",
-    "origen": "Introducido",
+    "nombreComun": "Drosophila melanogaster",
+    "nombreCientifico": "Mosca de la fruta",
+    "origen": "Introducida",
     "imagen": "diptera03.jpg"
   },
   {
     "id": 26,
     "orden": "Diptera",
     "familia": "Muscidae",
-    "nombreComun": "Mosca domestica",
-    "nombreCientifico": "Musca domestica",
-    "origen": "Introducido",
+    "nombreComun": "Musca domestica",
+    "nombreCientifico": "Mosca domestica",
+    "origen": "Introducida",
     "imagen": "diptera04.jpg"
   },
   {
     "id": 27,
     "orden": "Hemiptera",
     "familia": "Margarodidae",
-    "nombreComun": "Cochinilla",
-    "nombreCientifico": "Eurhizococcus colombianus",
-    "origen": "Nativo",
+    "nombreComun": "Eurhizococcus colombianus",
+    "nombreCientifico": "Cochinilla",
+    "origen": "Nativa",
     "imagen": "hemiptera01.jpg"
   },
   {
     "id": 28,
     "orden": "Hemiptera",
     "familia": "Pentatomidae",
-    "nombreComun": "Chinche predadora",
-    "nombreCientifico": "Podisus congrex",
-    "origen": "Nativo",
+    "nombreComun": "Podisus congrex",
+    "nombreCientifico": "Chinche predadora",
+    "origen": "Nativa",
     "imagen": "hemiptera02.jpg"
   },
   {
     "id": 29,
     "orden": "Hymenoptera",
     "familia": "Apidae",
-    "nombreComun": "Abejorro",
-    "nombreCientifico": "Bombus pauloensis (atratus)",
-    "origen": "Nativo",
+    "nombreComun": "Bombus pauloensis (atratus)",
+    "nombreCientifico": "Abejorro",
+    "origen": "Nativa",
     "imagen": "hymenoptera01.jpg"
   },
   {
     "id": 30,
     "orden": "Hymenoptera",
     "familia": "Apidae",
-    "nombreComun": "Abeja angelita",
-    "nombreCientifico": "Melipona eburnea",
-    "origen": "Nativo",
+    "nombreComun": "Melipona eburnea",
+    "nombreCientifico": "Abeja angelita",
+    "origen": "Nativa",
     "imagen": "hymenoptera02.jpg"
   },
   {
     "id": 31,
     "orden": "Hymenoptera",
     "familia": "Apidae",
-    "nombreComun": "Mandaguari",
-    "nombreCientifico": "Scaptotrigona pectoralis",
-    "origen": "Nativo",
+    "nombreComun": "Scaptotrigona pectoralis",
+    "nombreCientifico": "Mandaguari",
+    "origen": "Nativa",
     "imagen": "hymenoptera03.jpg"
   },
   {
     "id": 32,
     "orden": "Hymenoptera",
     "familia": "Apidae",
-    "nombreComun": "Abeja Jatai",
-    "nombreCientifico": "Tetragonisca angustula",
-    "origen": "Nativo",
+    "nombreComun": "Tetragonisca angustula",
+    "nombreCientifico": "Abeja Jatai",
+    "origen": "Nativa",
     "imagen": "hymenoptera04.jpg"
   },
   {
     "id": 33,
     "orden": "Hymenoptera",
     "familia": "Formicidae",
-    "nombreComun": "Hormiga arriera",
-    "nombreCientifico": "Atta cephalotes",
-    "origen": "Nativo",
+    "nombreComun": "Atta cephalotes",
+    "nombreCientifico": "Hormiga arriera",
+    "origen": "Nativa",
     "imagen": "hymenoptera05.jpg"
   },
   {
     "id": 34,
     "orden": "Hymenoptera",
     "familia": "Formicidae",
-    "nombreComun": "Hormiga culona",
-    "nombreCientifico": "Atta laevigata",
-    "origen": "Nativo",
+    "nombreComun": "Atta laevigata",
+    "nombreCientifico": "Hormiga culona",
+    "origen": "Nativa",
     "imagen": "hymenoptera06.jpg"
   },
   {
     "id": 35,
     "orden": "Hymenoptera",
     "familia": "Formicidae",
-    "nombreComun": "Hormiga carpintera",
-    "nombreCientifico": "Camponotus mus",
-    "origen": "Nativo",
+    "nombreComun": "Camponotus mus",
+    "nombreCientifico": "Hormiga carpintera",
+    "origen": "Nativa",
     "imagen": "hymenoptera07.jpg"
   },
   {
     "id": 36,
     "orden": "Hymenoptera",
     "familia": "Formicidae",
-    "nombreComun": "Hormiga carpintera",
-    "nombreCientifico": "Camponotus novogranadensis",
-    "origen": "Nativo",
+    "nombreComun": "Camponotus novogranadensis",
+    "nombreCientifico": "Hormiga carpintera negra",
+    "origen": "Nativa",
     "imagen": "hymenoptera08.jpg"
   },
   {
     "id": 37,
     "orden": "Hymenoptera",
     "familia": "Formicidae",
-    "nombreComun": "Hormiga guerrera",
-    "nombreCientifico": "Eciton burchellii",
-    "origen": "Nativo",
+    "nombreComun": "Eciton burchellii",
+    "nombreCientifico": "Hormiga guerrera",
+    "origen": "Nativa",
     "imagen": "hymenoptera09.jpg"
+  },
+  {
+    "id": 38,
+    "orden": "Lepidoptera",
+    "familia": "Crambidae",
+    "nombreComun": "Diatraea saccharalis",
+    "nombreCientifico": "Taladro de la caña de azúcar",
+    "origen": "Nativa",
+    "imagen": "lepidoptera01.jpg"
   },
   {
     "id": 39,
     "orden": "Lepidoptera",
-    "familia": "Crambidae",
-    "nombreComun": "Taladro de la caña de azúcar",
-    "nombreCientifico": "Diatraea saccharalis",
-    "origen": "Nativo",
-    "imagen": "lepidoptera01.jpg"
+    "familia": "Erebidae",
+    "nombreComun": "Eloria noyesi",
+    "nombreCientifico": "Polilla de la coca",
+    "origen": "Nativa",
+    "imagen": "lepidoptera02.jpg"
   },
   {
     "id": 40,
     "orden": "Lepidoptera",
-    "familia": "Erebidae",
-    "nombreComun": "Polilla de la coca",
-    "nombreCientifico": "Eloria noyesi",
-    "origen": "Nativo",
-    "imagen": "lepidoptera02.jpg"
+    "familia": "Ninfasalide",
+    "nombreComun": "Caligo eurilochus",
+    "nombreCientifico": "Mariposa buho",
+    "origen": "Nativa",
+    "imagen": "lepidoptera03.jpg"
   },
   {
     "id": 41,
     "orden": "Lepidoptera",
     "familia": "Ninfasalide",
-    "nombreComun": "Mariposa buho",
-    "nombreCientifico": "Caligo eurilochus",
-    "origen": "Nativo",
-    "imagen": "lepidoptera03.jpg"
+    "nombreComun": "Danaus plexippus",
+    "nombreCientifico": "Mariposa monarca",
+    "origen": "Nativa",
+    "imagen": "lepidoptera04.jpg"
   },
   {
     "id": 42,
     "orden": "Lepidoptera",
     "familia": "Ninfasalide",
-    "nombreComun": "Mariposa monarca",
-    "nombreCientifico": "Danaus plexippus",
-    "origen": "Nativo",
-    "imagen": "lepidoptera04.jpg"
+    "nombreComun": "Dione glycera",
+    "nombreCientifico": "Pasionaria andina",
+    "origen": "Nativa",
+    "imagen": "lepidoptera05.jpg"
   },
   {
     "id": 43,
     "orden": "Lepidoptera",
     "familia": "Ninfasalide",
-    "nombreComun": "Pasionaria andina",
-    "nombreCientifico": "Dione glycera",
-    "origen": "Nativo",
-    "imagen": "lepidoptera05.jpg"
+    "nombreComun": "Morpho rhodopteron",
+    "nombreCientifico": "Maripoza emperador",
+    "origen": "Nativa",
+    "imagen": "lepidoptera06.jpg"
   },
   {
     "id": 44,
     "orden": "Lepidoptera",
-    "familia": "Ninfasalide",
-    "nombreComun": "Maripoza emperador",
-    "nombreCientifico": "Morpho rhodopteron",
-    "origen": "Nativo",
-    "imagen": "lepidoptera06.jpg"
+    "familia": "Nymphalidae",
+    "nombreComun": "Morpho cypris",
+    "nombreCientifico": "Mariposa de Muzo",
+    "origen": "Nativa",
+    "imagen": "lepidoptera07.jpg"
   },
   {
     "id": 45,
     "orden": "Lepidoptera",
-    "familia": "Nymphalidae",
-    "nombreComun": "Mariposa de Muzo",
-    "nombreCientifico": "Morpho cypris",
-    "origen": "Nativo",
-    "imagen": "lepidoptera07.jpg"
+    "familia": "Bombycidae",
+    "nombreComun": "Bombyx mori",
+    "nombreCientifico": "Gusano de seda",
+    "origen": "Introducida",
+    "imagen": "lepidoptera08.jpg"
   },
   {
     "id": 46,
     "orden": "Lepidoptera",
-    "familia": "Bombycidae",
-    "nombreComun": "Gusano de seda",
-    "nombreCientifico": "Bombyx mori",
-    "origen": "Introducido",
-    "imagen": "lepidoptera08.jpg"
+    "familia": "Pyralidae",
+    "nombreComun": "Galleria mellonella",
+    "nombreCientifico": "Polilla de cera",
+    "origen": "Introducida",
+    "imagen": "lepidoptera09.jpg"
   },
   {
     "id": 47,
-    "orden": "Lepidoptera",
-    "familia": "Pyralidae",
-    "nombreComun": "Polilla de cera",
-    "nombreCientifico": "Galleria mellonella",
-    "origen": "Introducido",
-    "imagen": "lepidoptera09.jpg"
+    "orden": "Orthoptera",
+    "familia": "Acrididae",
+    "nombreComun": "Abracris flavolineata",
+    "nombreCientifico": "Saltamontes de línea amarilla",
+    "origen": "Nativa",
+    "imagen": "orthoptera01.jpg"
   },
   {
     "id": 48,
     "orden": "Orthoptera",
     "familia": "Acrididae",
-    "nombreComun": "Saltamontes de línea amarilla",
-    "nombreCientifico": "Abracris flavolineata",
-    "origen": "Nativo",
-    "imagen": "orthoptera01.jpg"
+    "nombreComun": "Rhammatocerus schistocercoides",
+    "nombreCientifico": "Langosta llanera",
+    "origen": "Nativa",
+    "imagen": "orthoptera02.jpg"
   },
   {
     "id": 49,
     "orden": "Orthoptera",
-    "familia": "Acrididae",
-    "nombreComun": "Langosta llanera",
-    "nombreCientifico": "Rhammatocerus schistocercoides",
-    "origen": "Nativo",
-    "imagen": "orthoptera02.jpg"
+    "familia": "Gryllidae",
+    "nombreComun": "Acheta domesticus",
+    "nombreCientifico": "Grillo doméstico",
+    "origen": "Introducida",
+    "imagen": "ortoptera03.jpg"
   },
   {
     "id": 50,
     "orden": "Orthoptera",
     "familia": "Gryllidae",
-    "nombreComun": "Grillo jamaiquino",
-    "nombreCientifico": "Gryllus assimilis",
-    "origen": "Nativo",
-    "imagen": "ortoptera03.jpg"
+    "nombreComun": "Gryllodes sigillatus",
+    "nombreCientifico": "Grillo bicolor, grillo rayado",
+    "origen": "Introducida",
+    "imagen": "ortoptera04.jpg"
   },
   {
     "id": 51,
     "orden": "Orthoptera",
+    "familia": "Gryllidae",
+    "nombreComun": "Gryllus assimilis",
+    "nombreCientifico": "Grillo jamaiquino",
+    "origen": "Nativa",
+    "imagen": "ortoptera05.jpg"
+  },
+  {
+    "id": 52,
+    "orden": "Coleoptera",
     "familia": "Scarabaeidae",
-    "nombreComun": "Escarabajo de los carrizos",
-    "nombreCientifico": "Golofa porteri",
-    "origen": "Nativo",
-    "imagen": "ortoptera04.jpg"
+    "nombreComun": "Golofa porteri",
+    "nombreCientifico": "Escarabajo de los carrizos",
+    "origen": "Nativa",
+    "imagen": "coleoptera18.jpg"
   }
-];
+]
