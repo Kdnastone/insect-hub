@@ -1,7 +1,9 @@
 // Importar React
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const SpeciesModal = ({ especie, onClose }) => {
+  const [imagenAmpliada, setImagenAmpliada] = useState(false);
+  
   if (!especie) return null;
 
   // Prevenir scroll del body cuando el modal está abierto
@@ -12,6 +14,26 @@ const SpeciesModal = ({ especie, onClose }) => {
     };
   }, []);
 
+  // Manejar tecla Escape para cerrar el modal principal
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        if (imagenAmpliada) {
+          setImagenAmpliada(false);
+        } else {
+          onClose();
+        }
+      }
+    };
+
+    // Agregar listener para tecla Escape
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [onClose, imagenAmpliada]);
+  
+  // Manejar clic fuera del modal para cerrarlo
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center px-2 sm:px-4">
       <div className="bg-white rounded-lg sm:rounded-xl shadow-2xl max-w-4xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto relative">
@@ -27,13 +49,14 @@ const SpeciesModal = ({ especie, onClose }) => {
         {/* Contenido principal */}
         <div className="p-4 sm:p-6 pt-16">
           
-          {/* Imagen principal */}
+           {/* Imagen principal */}
           <div className="text-center mb-4 sm:mb-6">
             <div className="mb-3 sm:mb-4">
               <img
                 src={`/assets/especies/${especie.imagen}`}
                 alt={especie.nombreComun}
-                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover rounded-lg mx-auto shadow-lg border-4 border-white"
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain rounded-lg mx-auto shadow-lg border-4 border-white bg-gray-50 cursor-pointer hover:shadow-xl transition-shadow"
+                onClick={() => setImagenAmpliada(true)}
                 onError={(e) => {
                   e.target.src = '/assets/especies/default.jpg';
                 }}
@@ -324,7 +347,6 @@ const SpeciesModal = ({ especie, onClose }) => {
             </div>
 
             {/* Peligros Sanitarios */}
-            {/* Peligros Sanitarios */}
             <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-red-500">
               <h3 className="text-base sm:text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
                 <span>⚠️</span> Peligros Sanitarios
@@ -384,6 +406,35 @@ const SpeciesModal = ({ especie, onClose }) => {
           </div>
         </div>
       </div>
+
+      {/* Modal de imagen ampliada */}
+      {imagenAmpliada && (
+        // Overlay para imagen ampliada
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 z-[70] flex items-center justify-center p-4"
+          onClick={() => setImagenAmpliada(false)}
+        >
+          <div className="relative max-w-3xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            <button
+            // Botón de cerrar imagen ampliada
+              onClick={() => setImagenAmpliada(false)}
+              className="absolute top-4 right-4 z-[80] bg-white hover:bg-red-500 text-black hover:text-white text-xl font-bold transition-all duration-200 w-10 h-10 flex items-center justify-center rounded-full shadow-lg"
+            >
+              ✕
+            </button>
+            <img
+              // Imagen ampliada
+              src={`/assets/especies/${especie.imagen}`}
+              alt={especie.nombreComun}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl bg-white p-2"
+              onClick={(e) => e.stopPropagation()}
+              onError={(e) => {
+                e.target.src = '/assets/especies/default.jpg';
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
