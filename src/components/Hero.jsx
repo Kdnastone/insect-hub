@@ -42,10 +42,10 @@ useEffect(() => {
           </h1>
           <p className="mt-2 text-base md:text-xl drop-shadow-md">
             Investigación, conservación y uso sostenible de insectos en Colombia
+          </p>
 
 
         {/* llamar a Button codificado*/}
-          </p>
           <BotonEscarabajo />
         </div>
       </div>

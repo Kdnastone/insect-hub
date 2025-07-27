@@ -24,7 +24,7 @@ export default function QuienesSomos() {
           {/* Sección sobre el enfoque y las líneas de trabajo */}
           <section className="bg-white shadow-lg rounded-lg p-6">
             <h2 className="text-3xl font-bold text-[#475C22] mb-4">¿Qué hacemos?</h2>
-            <p className="text-[#475C22] leading-relaxed text-justify">
+            <div className="text-[#475C22] leading-relaxed text-justify">
               Nuestras líneas de acción abarcan:
               <ul className="list-disc list-inside mt-2">
                 <li>Investigación aplicada en especies de artrópodos con valor productivo y biotecnológico.</li>
@@ -34,7 +34,7 @@ export default function QuienesSomos() {
                 <li>Formación mediante cursos, talleres y seminarios especializados.</li>
                 <li>Apoyo académico a prácticas, pasantías y proyectos de grado.</li>
               </ul>
-            </p>
+            </div>
           </section>
         </div>
 
