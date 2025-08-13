@@ -11,10 +11,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         {/* Logo + título */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <Link to="/" className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-opacity">
           <img src={CINAT} alt="Logo CINAT UNAL" className="h-8 sm:h-10 w-auto" />
           <h1 className="text-lg sm:text-xl font-bold">CINAT UNAL</h1>
-        </div>
+        </Link>
 
         {/* Menú desktop - oculto en móvil */}
         <ul className="hidden md:flex items-center space-x-6 text-sm lg:text-base">
