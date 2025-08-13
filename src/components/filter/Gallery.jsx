@@ -1,6 +1,6 @@
 //Importar React y hooks necesarios
 import { useState } from "react";
-import { especies } from "../../data/especies";
+import  especies  from "../../data/especies";
 import { fichas } from "../../data/fichas";
 import SpeciesCard from "./SpeciesCard";
 import FilterMenu from "./FilterMenu";
@@ -18,12 +18,15 @@ const Gallery = () => {
   const ordenesUnicos = [...new Set(especies.map(e => e.orden))];
   const origenesUnicos = [...new Set(especies.map(e => e.origen))];
 
-  // Filtra especies según selección
-  const especiesFiltradas = especies.filter((e) => {
-    const coincideOrden = ordenSeleccionado === "Todos" || e.orden === ordenSeleccionado;
-    const coincideOrigen = origenSeleccionado === "Todos" || e.origen === origenSeleccionado;
-    return coincideOrden && coincideOrigen;
-  });
+  // Filtra especies según selección Y ordena por ID
+  const especiesFiltradas = especies
+    .filter((e) => {
+      const coincideOrden = ordenSeleccionado === "Todos" || e.orden === ordenSeleccionado;
+      const coincideOrigen = origenSeleccionado === "Todos" || e.origen === origenSeleccionado;
+      return coincideOrden && coincideOrigen;
+    })
+    .sort((a, b) => a.id - b.id); // Ordenar por ID de menor a mayor
+
 
   // Combina datos al hacer clic en tarjeta - CORREGIDO PARA PRESERVAR IMAGEN
   const handleCardClick = (especie) => {

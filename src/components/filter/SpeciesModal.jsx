@@ -1,6 +1,7 @@
 // Importar React
 import React, { useEffect, useState } from 'react';
 
+
 const SpeciesModal = ({ especie, onClose }) => {
   const [imagenAmpliada, setImagenAmpliada] = useState(false);
   
@@ -129,7 +130,7 @@ const SpeciesModal = ({ especie, onClose }) => {
                 <span>🔍</span> Diagnóstico
               </h3>
               <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
-                __html: especie.diagnosis || 'No hay diagnóstico disponible' 
+                __html: especie.diagnostico || 'No hay diagnóstico disponible' 
               }} />
             </div>
 
@@ -319,11 +320,6 @@ const SpeciesModal = ({ especie, onClose }) => {
                     
                     {/* Relación Ecológica */}
                     <tr>
-                      <td className="border p-2 align-top font-semibold" rowSpan="2">Relación Ecológica</td>
-                      <td className="border p-2 align-top">Plaga</td>
-                      <td className="border p-2 align-top">{especie.seRelacionEcologicaPlaga || '-'}</td>
-                    </tr>
-                    <tr>
                       <td className="border p-2 align-top">Agroecológica</td>
                       <td className="border p-2 align-top">{especie.seRelacionEcologicaAgroecologica || '-'}</td>
                     </tr>
@@ -346,8 +342,20 @@ const SpeciesModal = ({ especie, onClose }) => {
               </div>
             </div>
 
-            {/* Peligros Sanitarios */}
+            {/* Peligros Ecológicos */}
             <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-red-500">
+              <h3 className="text-base sm:text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
+                <span>⚠️</span> Peligros Ecológicos
+              </h3>
+              <div className="text-gray-700 leading-relaxed text-sm sm:text-base" dangerouslySetInnerHTML={{ 
+                __html: (especie.peligrosEcologicos && especie.peligrosEcologicos.trim() !== '') 
+                  ? especie.peligrosEcologicos 
+                  : 'No hay información de peligros ecológicos disponible' 
+              }} />
+            </div>
+
+            {/* Peligros Sanitarios */}
+           <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border-l-4 border-red-500">
               <h3 className="text-base sm:text-lg font-bold text-red-700 mb-3 flex items-center gap-2">
                 <span>⚠️</span> Peligros Sanitarios
               </h3>
