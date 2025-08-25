@@ -2,9 +2,31 @@
 import { useState } from "react";
 import { CalendarDays, Rocket, BookOpen, FileText } from "lucide-react";
 
+// Importar los componentes de cada pestaña
+import ProyectosTab from "../components/tabs/ProyectosTab";
+import NormatividadTab from "../components/tabs/NormatividadTab";
+import EventosTab from "../components/tabs/EventosTab";
+import PublicacionesTab from "../components/tabs/PublicacionesTab";
+
 export default function News() {
-    // Estado para manejar la pestaña activa
-  const [tab, setTab] = useState("proyectos"); 
+  // Estado para manejar la pestaña activa
+  const [tab, setTab] = useState("proyectos");
+
+  // Función para renderizar el contenido según la pestaña activa
+  const renderTabContent = () => {
+    switch (tab) {
+      case "proyectos":
+        return <ProyectosTab />;
+      case "normatividad":
+        return <NormatividadTab />;
+      case "eventos":
+        return <EventosTab />;
+      case "publicaciones":
+        return <PublicacionesTab />;
+      default:
+        return <ProyectosTab />;
+    }
+  };
 
   return (
     // Componente principal que renderiza la página de noticias
@@ -56,53 +78,7 @@ export default function News() {
 
       {/* Contenido de cada tab - Responsive Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-
-        {tab === "proyectos" && (
-          <div className="border rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow bg-white">
-            <h2 className="font-semibold text-lg sm:text-xl text-green-800 mb-2 sm:mb-3">
-              Web y API de especies de interés
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600">
-              Proyecto para la divulgación estructurada de especies de insectos con valor científico y productivo.
-            </p>
-          </div>
-        )}
-
-        {tab === "normatividad" && (
-          <div className="border rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow bg-white">
-            <h2 className="font-semibold text-lg sm:text-xl text-green-800 mb-2 sm:mb-3">
-              Análisis normativo para la cría de insectos
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600">
-              Propuesta regulatoria para categorizar especies y facilitar el marco legal de producción de insectos.
-            </p>
-          </div>
-        )}
-
-        {tab === "eventos" && (
-          <div className="border rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow bg-white">
-            <h2 className="font-semibold text-lg sm:text-xl text-green-800 mb-2 sm:mb-3">
-              Presentación Avances Normativos 2025
-            </h2>
-            <p className="text-xs sm:text-sm text-green-600 font-medium mb-2">
-              Agosto 22, 2025 · Universidad Nacional de Colombia
-            </p>
-            <p className="text-sm sm:text-base text-gray-600">
-              Presentación de los avances en la regulación, producción y aplicación de algunos insectos en Colombia.
-            </p>
-          </div>
-        )}
-
-        {tab === "publicaciones" && (
-          <div className="border rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow bg-white">
-            <h2 className="font-semibold text-lg sm:text-xl text-green-800 mb-2 sm:mb-3">
-              Estado del arte de Tenebrio molitor en Colombia
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600">
-              Publicado en proceso de revisión.
-            </p>
-          </div>
-        )}
+        {renderTabContent()}
       </div>
     </div>
   );
