@@ -23,6 +23,7 @@ export default function Navbar() {
           <li><Link to="/team" className="hover:text-green-200 transition-colors">Equipo</Link></li>
           <li><Link to="/news" className="hover:text-green-200 transition-colors">Noticias</Link></li>
           <li><Link to="/especies" className="hover:text-green-200 transition-colors">Especies</Link></li>
+          <li><Link to="/riesgos" className="hover:text-green-200 transition-colors">Riesgos</Link></li>
           <li><Link to="/api" className="hover:text-green-200 transition-colors">API</Link></li>
           <li><Link to="/recursos" className="hover:text-green-200 transition-colors">Recursos</Link></li>
           <li><Link to="/project" className="hover:text-green-200 transition-colors">Proyecto</Link></li>
@@ -61,6 +62,7 @@ export default function Navbar() {
             <li><Link to="/team" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Equipo</Link></li>
             <li><Link to="/news" className="block py-2 hover:bg-green-400  hover:text-black transition-colors" onClick={() => setIsOpen(false)}>Noticias</Link></li>
             <li><Link to="/especies" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Especies de Interés</Link></li>
+            <li><Link to="/riesgos" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Riesgos</Link></li>
             <li><Link to="/api" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>API</Link></li>
             <li><Link to="/recursos" className="block py-2 hover:bg-green-400  hover:text-black transition-colors" onClick={() => setIsOpen(false)}>Normatividad</Link></li>
             <li><Link to="/project" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Sobre la página</Link></li>

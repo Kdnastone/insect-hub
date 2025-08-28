@@ -12,13 +12,15 @@ import NotFound404 from "./pages/NotFound404"
 import Project from "./pages/Project"
 import Api from "./pages/Api"
 import News from "./pages/News"
+import RiskAssessments from "./pages/RiskAssessments"
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen">
         <Navbar />
-        
+
+        {/* Contenido principal */}
         <main className="pt-16 pb-20 sm:pb-24">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -26,6 +28,7 @@ function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/news" element={<News />} />
             <Route path="/especies" element={<Especies />} />
+            <Route path="/riesgos" element={<RiskAssessments />} />
             <Route path="/api" element={<Api />} />
             <Route path="/recursos" element={<Recursos />} />
             <Route path="/contacto" element={<Contacto />} />
