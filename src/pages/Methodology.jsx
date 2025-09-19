@@ -299,10 +299,10 @@ const Methodology = () => (
               <div>
                 <span className="font-bold text-green-900">Índice de Riesgo Total:</span>
                 <div className="font-mono text-base bg-green-50 rounded px-2 py-1 block mt-1">
-                  It = {'{'} Ic − Ir &nbsp; si Ir &gt; 0 <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ib + Ir &nbsp; si Ir &lt; 0 {'}'}
+                  It = Ic − Ir &nbsp;<br />
+                  si It &gt; 0: significa que el control supera los riesgos.<br />
+                  si It &lt; 0: significa que el riesgo supera a los controles.</div>
                 </div>
-              </div>
               <div>
                 <span className="font-bold text-green-900">Índice neto:</span>
                 <div className="font-mono text-base bg-green-50 rounded px-2 py-1 block mt-1">
