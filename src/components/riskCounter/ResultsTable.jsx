@@ -5,6 +5,7 @@ import React from 'react';
 const ResultsTable = ({ resultados, mostrarResultados }) => {
   if (!mostrarResultados || !resultados) return null;
 
+  // Estructura de la tabla de resultados
   return (
     <div className="mb-8">
       <h2 className="text-2xl bg-gradient-to-r from-green-600 to-green-800 text-white shadow-lg"> 
@@ -33,7 +34,7 @@ const ResultsTable = ({ resultados, mostrarResultados }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(resultados.resultadosPorCategoria).map(([categoria, datos]) => {
+          {Object.entries(resultados.resultadosPorBloque).map(([categoria, datos]) => {
             let nivelCat = 'Bajo';
             if (datos.porcentaje > 60) nivelCat = 'Alto';
             else if (datos.porcentaje > 30) nivelCat = 'Moderado';

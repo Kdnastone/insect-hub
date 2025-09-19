@@ -57,3 +57,12 @@ Este proyecto está dirigido a:
 </p>
 Este trabajo forma parte de la etapa práctica del SENA, requisito para obtener el título de Tecnóloga en Análisis y Desarrollo de Software.
 Fue desarrollado por Sandra Cadena, bióloga con énfasis en control biológico, apasionada por los artrópodos y la aplicación de la tecnología en la agricultura.
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT.  
+Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+
+## 🤖 Nota de desarrollo
+
+Este proyecto fue desarrollado con apoyo de GitHub Copilot y herramientas de IA en VS Code.

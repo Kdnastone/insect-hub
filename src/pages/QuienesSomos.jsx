@@ -4,7 +4,7 @@ import aboutImagen from '../assets/team/about01.jpg';
 export default function QuienesSomos() {
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="container mx-auto px-4 text-center py-10 text-[#475C22]">
+      <div className="container mx-auto px-4 text-center py-10 text-green-800">
         <h1 className="text-4xl font-bold">Centro de Investigación de Artrópodos Terrestres – CINAT</h1>
       </div>
 
@@ -13,8 +13,8 @@ export default function QuienesSomos() {
           
           {/* Sección de descripción del CINAT */}
           <section className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4">¿Quiénes somos?</h2>
-            <p className="text-[#475C22] leading-relaxed mb-4 text-justify">
+            <h2 className="text-3xl font-bold text-green-800 mb-4">¿Quiénes somos?</h2>
+            <p className="text-green-800 leading-relaxed mb-4 text-justify">
               El <strong>CINAT</strong>, perteneciente a la Universidad Nacional de Colombia, es un espacio donde la ciencia y la sostenibilidad se unen
               para revalorizar la biodiversidad que habita nuestros suelos. Nuestro trabajo se enfoca en el estudio, la cría y el aprovechamiento responsable
               de artrópodos terrestres, especialmente insectos, con el fin de proponer soluciones innovadoras en alimentación, economía circular y conservación.
@@ -23,8 +23,8 @@ export default function QuienesSomos() {
 
           {/* Sección sobre el enfoque y las líneas de trabajo */}
           <section className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4">¿Qué hacemos?</h2>
-            <div className="text-[#475C22] leading-relaxed text-justify">
+            <h2 className="text-3xl font-bold text-green-800 mb-4">¿Qué hacemos?</h2>
+            <div className="text-green-800 leading-relaxed text-justify">
               Nuestras líneas de acción abarcan:
               <ul className="list-disc list-inside mt-2">
                 <li>Investigación aplicada en especies de artrópodos con valor productivo y biotecnológico.</li>

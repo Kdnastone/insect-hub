@@ -3,7 +3,7 @@ import team01 from "../assets/team/team01.jpg"
 export const Team = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="container mx-auto px-4 text-center py-10 text-[#475C22]">
+      <div className="container mx-auto px-4 text-center py-10 text-green-800">
         <h1 className="text-4xl font-bold">Equipo de Desarrollo</h1>
       </div>
 
@@ -11,8 +11,8 @@ export const Team = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Sección de descripción del equipo */}
           <section className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4">Sobre el Equipo</h2>
-            <p className="text-[#475C22] leading-relaxed text-justify mb-4">
+            <h2 className="text-3xl font-bold text-green-800 mb-4">Sobre el Equipo</h2>
+            <p className="text-green-800 leading-relaxed text-justify mb-4">
               Este proyecto es desarrollado por un equipo interdisciplinario con formación en zootecnia, entomología agrícola, desarrollo de software y comunicación científica.<br />
               Nos une el compromiso de aplicar el conocimiento y la tecnología para promover la sostenibilidad y fortalecer la divulgación científica, 
               especialmente en torno a los insectos como recurso estratégico para el futuro.<br />
@@ -35,8 +35,8 @@ export const Team = () => {
 
           {/* Sección sobre el estado del desarrollo */}
           <section className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4">Estado de esta Sección</h2>
-            <p className="text-[#475C22] leading-relaxed text-justify">
+            <h2 className="text-3xl font-bold text-green-800 mb-4">Estado de esta Sección</h2>
+            <p className="text-green-800 leading-relaxed text-justify">
               Esta sección se encuentra actualmente en construcción. Estamos preparando una presentación detallada del equipo, sus perfiles, roles y aportes a este proyecto.
               Agradecemos tu paciencia mientras terminamos de organizar esta información.
             </p>

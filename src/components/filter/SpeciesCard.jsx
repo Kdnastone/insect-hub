@@ -14,7 +14,7 @@ const SpeciesCard = ({ especie, onClick }) => {
         className="w-full h-48 object-contain rounded-lg mb-4"
       />
       {/* Información de la especie */}
-      <h3 className="text-lg font-bold text-[#475C22]">{especie.nombreComun}</h3>
+      <h3 className="text-lg font-bold text-green-800">{especie.nombreComun}</h3>
       <p className="italic text-sm text-gray-600 mb-2">{especie.nombreCientifico}</p>
       {especie.origen && (
         <div className="flex justify-center">

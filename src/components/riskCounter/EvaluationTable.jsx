@@ -22,7 +22,7 @@ const EvaluationTable = ({ questions, evaluaciones, actualizarEvaluacion }) => {
     return acc;
   }, {});
 
-  // Renderizar la tabla
+  // Renderizar la tabla de evaluación
   return (
     <div className="mb-8">
       <h2 className="text-2xl font-bold mb-4">Tabla de Evaluación</h2>

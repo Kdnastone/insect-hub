@@ -13,6 +13,7 @@ import Project from "./pages/Project"
 import Api from "./pages/Api"
 import News from "./pages/News"
 import RiskAssessments from "./pages/RiskAssessments"
+import Methodology from "./pages/Methodology"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/recursos" element={<Recursos />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/project" element={<Project />} />
+            <Route path="/metodologia" element={<Methodology />} />
             <Route path="*" element={<NotFound404 />} />
           </Routes>
         </main>

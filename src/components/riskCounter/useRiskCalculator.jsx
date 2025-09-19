@@ -1,27 +1,15 @@
-// Importar React
-import { useState } from 'react';
+// Importar React, hooks y librerías necesarias para exportar en EXCEL y CSV
+import { useState } from "react";
+import ExcelJS from "exceljs";
+import { valoresRespuesta, valoresBloque4 } from "../../data/valoresRespuesta";
 
-export const useRiskCalculator = (questions) => {
-  // Estado para almacenar las evaluaciones
-  const [evaluaciones, setEvaluaciones] = useState(() => {
-    const inicial = {};
-    questions.forEach(pregunta => {
-      const key = `pregunta_${pregunta.id}`;
-      inicial[key] = {
-        valoracion: '',
-        informacion: '', 
-        bibliografia: '',
-        categoria: pregunta.category,
-        pregunta: pregunta.question
-      };
-    });
-    return inicial;
-  });
-
-  const [resultados, setResultados] = useState(null);
+// Hook personalizado para manejar la lógica de la evaluación de riesgos
+function useRiskCalculator(questions) {
+  const [evaluaciones, setEvaluaciones] = useState({});
+  const [resultados, setResultados] = useState({});
   const [mostrarResultados, setMostrarResultados] = useState(false);
 
-  // Función para actualizar evaluación
+  // Actualizar evaluación
   const actualizarEvaluacion = (key, campo, valor) => {
     setEvaluaciones(prev => ({
       ...prev,
@@ -32,13 +20,15 @@ export const useRiskCalculator = (questions) => {
     }));
   };
 
-  // Función para calcular resultados
+  // Calcular resultados
   const calcularResultados = () => {
-    const preguntasSinEvaluar = Object.values(evaluaciones).filter(evaluacion => 
-      evaluacion.valoracion === '' || evaluacion.valoracion === undefined
-    );
+      // Revisar preguntas sin evaluar antes de calcular y alertar al usuario
+    const preguntasSinEvaluar = questions.filter(q => {
+      const ev = evaluaciones[`pregunta_${q.id}`];
+      return !ev || ev.valoracion === '' || ev.valoracion === undefined;
+    });
 
-    if (preguntasSinEvaluar.length === Object.keys(evaluaciones).length) {
+    if (preguntasSinEvaluar.length === questions.length) {
       alert('⚠️ No has evaluado ninguna pregunta. Por favor, evalúa al menos una pregunta antes de calcular los resultados.');
       return;
     }
@@ -48,79 +38,135 @@ export const useRiskCalculator = (questions) => {
         `⚠️ Hay ${preguntasSinEvaluar.length} pregunta(s) sin evaluar.\n\n` +
         `¿Deseas continuar con el cálculo? Las preguntas sin evaluar no se incluirán en el cálculo.`
       );
-      
       if (!confirmar) {
         return;
       }
     }
+    
+    // Inicializar bloques y puntos en 0 para evitar NaN
+    const bloques = {
+      "Bloque 1": { puntos: 0 },
+      "Bloque 2": { puntos: 0 },
+      "Bloque 3": { puntos: 0 },
+      "Bloque 4": { puntos: 0 },
+      "Bloque 5": { puntos: 0 },
+      "Bloque 6": { puntos: 0 }
+    };
 
-    const preguntasEvaluadas = Object.values(evaluaciones).filter(evaluacion => 
-      evaluacion.valoracion !== '' && evaluacion.valoracion !== undefined
-    );
-    
-    //Cálculo de resultados generales según las preguntas totales
-    const totalPreguntas = preguntasEvaluadas.length;
-    const puntosObtenidos = preguntasEvaluadas.reduce((sum, evaluacion) => {
-      return sum + parseInt(evaluacion.valoracion || 0);
-    }, 0);
-    
-    // Son 3 puntos máximos por pregunta. Evitar división por cero
-    const porcentaje = totalPreguntas > 0 ? (100 / (totalPreguntas * 3)) * puntosObtenidos : 0;
-    
-    // Calcular por categoría
-    const resultadosPorCategoria = {};
-    const categorias = [...new Set(questions.map(q => q.category))];
-    
-    // Calcular resultados por cada categoría
-    categorias.forEach(categoria => {
-      const preguntasCategoria = questions.filter(q => q.category === categoria);
-      let puntosCat = 0;
-      let preguntasEvaluadasCat = 0;
-      
-      preguntasCategoria.forEach(pregunta => {
-        const key = `pregunta_${pregunta.id}`;
-        const valoracion = evaluaciones[key]?.valoracion;
-        if (valoracion !== '' && valoracion !== undefined) {
-          puntosCat += parseInt(valoracion || 0);
-          preguntasEvaluadasCat++;
-        }
-      });
+    // Definir pesos de bloque según la metodología descrita
+    const pesos = {
+      "Bloque 1": 0.25,
+      "Bloque 2": 0.25,
+      "Bloque 3": 0.25,
+      "Bloque 4": 0.25,
+      "Bloque 5": 1,
+      "Bloque 6": 1
+    };
 
-      // Calcular porcentaje por categoría
-      const porcentajeCat = preguntasEvaluadasCat > 0 ? (100 / (preguntasEvaluadasCat * 3)) * puntosCat : 0;
-      resultadosPorCategoria[categoria] = {
-        puntos: puntosCat,
-        preguntas: preguntasEvaluadasCat,
-        total: preguntasCategoria.length,
-        porcentaje: porcentajeCat.toFixed(2)
+    // Contar preguntas por bloque
+    const preguntasPorBloque = {};
+    questions.forEach(p => {
+      preguntasPorBloque[p.category] = (preguntasPorBloque[p.category] || 0) + 1;
+    });
+
+    // Procesar respuestas
+    questions.forEach(pregunta => {
+      const key = `pregunta_${pregunta.id}`;
+      const ev = evaluaciones[key];
+
+    // Diccionario según el bloque
+      const diccionario = pregunta.category === "Bloque 4"
+        ? valoresBloque4
+        : valoresRespuesta;
+
+      const valor = diccionario[ev?.valoracion] ?? 0;
+
+      bloques[pregunta.category].puntos += valor;
+    });
+
+    // Calcular índices parciales y por tipo
+    const indicesParciales = {};
+    const indicesPorTipo = {};
+    Object.entries(bloques).forEach(([bloque, { puntos }]) => {
+      const respuestas = preguntasPorBloque[bloque] || 0;
+      const puntosPosibles = respuestas * 3;
+      const indiceParcial = puntosPosibles > 0 ? puntos / puntosPosibles : 0;
+      const indicePorTipo = indiceParcial * (pesos[bloque] || 1);
+
+      indicesParciales[bloque] = indiceParcial;
+      indicesPorTipo[bloque] = indicePorTipo;
+    });
+
+    // Índices globales
+    const Ir = indicesPorTipo["Bloque 1"] + indicesPorTipo["Bloque 2"] + indicesPorTipo["Bloque 3"] + indicesPorTipo["Bloque 4"];
+    const Ic = indicesPorTipo["Bloque 5"];
+    const Ib = indicesPorTipo["Bloque 6"];
+    const Iriesgototal = Ic - Ir;
+
+    // Índice Neto según tu regla
+    let Ineto;
+    if (Iriesgototal > 0) {
+      Ineto = Ib - Iriesgototal;
+    } else {
+      Ineto = Ib + Iriesgototal;
+    }
+
+    // Mostrar en la tabla por bloque
+    const resultadosPorBloque = {};
+    Object.entries(bloques).forEach(([bloque, { puntos }]) => {
+      const respuestas = preguntasPorBloque[bloque] || 0;
+      const puntosPosibles = respuestas * 3;
+      const indiceParcial = indicesParciales[bloque];
+      const indicePorTipo = indicesPorTipo[bloque];
+      resultadosPorBloque[bloque] = {
+        respuestas,
+        puntos: puntos.toFixed(2),
+        puntosPosibles,
+        indiceParcial: indiceParcial.toFixed(2),
+        indicePorTipo: indicePorTipo.toFixed(2),
+        porcentaje: puntosPosibles > 0 ? Math.round((puntos / puntosPosibles) * 100) + '%' : '0%'
+
       };
     });
 
-    // Determinar nivel de riesgo
-    let nivelRiesgo = 'Bajo';
-    if (porcentaje > 60) nivelRiesgo = 'Alto';
-    else if (porcentaje > 30) nivelRiesgo = 'Moderado';
+    // Calcular puntos obtenidos y total de preguntas
+      const puntosObtenidos = Object.values(bloques).reduce((acc, b) => acc + b.puntos, 0);
+      const totalPreguntas = questions.length;
 
     setResultados({
-      puntosObtenidos,
-      totalPreguntas,
-      totalPreguntasDisponibles: Object.keys(evaluaciones).length,
-      porcentaje: porcentaje.toFixed(2),
-      nivelRiesgo,
-      resultadosPorCategoria
+      resultadosPorBloque,
+      Ir: Math.round(Ir * 100),
+      Iriesgototal: Math.round(Iriesgototal * 100),
+      Ineto: Math.round(Ineto * 100),
+      Ic: Math.round(Ic * 100),
+      Ib: Math.round(Ib * 100),
+      puntosObtenidos: isNaN(Number(puntosObtenidos)) ? "0.00" : puntosObtenidos.toFixed(2),
+      totalPreguntas: isNaN(Number(totalPreguntas)) ? 0 : totalPreguntas
     });
-    setMostrarResultados(true);
 
-    alert(
-      `✅ Cálculo completado exitosamente!\n\n` +
-      `Preguntas evaluadas: ${totalPreguntas} de ${Object.keys(evaluaciones).length}\n` +
-      `Puntos obtenidos: ${puntosObtenidos} de ${totalPreguntas * 3}\n` +
-      `Resultado: ${porcentaje.toFixed(2)}% - Riesgo ${nivelRiesgo}`
-    );
+    setMostrarResultados(true);
   };
 
   // Función para imprimir
   const imprimir = () => {
+    // Construir filas con TODAS las preguntas
+    const tablaPreguntas = questions.map(q => {
+      const ev = evaluaciones[`pregunta_${q.id}`] || {};
+      return `
+        <tr>
+          <td class="col-meta">${q.component}</td>
+          <td class="col-meta">${q.category}</td>
+          <td class="col-meta">${q.subcategory}</td>
+          <td class="col-meta">${q.area}</td>
+          <td class="col-main">${q.id}</td>
+          <td class="col-main">${q.question}</td>
+          <td class="col-main">${ev.valoracion || "Sin responder"}</td>
+          <td class="col-main">${ev.informacion || "N/A"}</td>
+          <td class="col-main">${ev.bibliografia || "N/A"}</td>
+        </tr>
+      `;
+    }).join("");
+
     // Crear HTML completo para imprimir
     const htmlReporte = `
       <!DOCTYPE html>
@@ -130,191 +176,189 @@ export const useRiskCalculator = (questions) => {
         <style>
           body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
           table { border-collapse: collapse; width: 100%; margin: 15px 0; }
-          th, td { border: 1px solid #000; padding: 8px; text-align: left; vertical-align: top; }
-          th { background-color: #f0f0f0; font-weight: bold; }
+          th, td { border: 1px solid #000; padding: 6px; vertical-align: top; }
+
+          th { background-color: #f0f0f0; font-weight: bold; text-align: center; }
+
+          /* Columnas pequeñas (meta info) */
+          .col-meta { font-size: 9pt; font-family: Arial, sans-serif; text-align: left; }
+
+          /* Columnas principales */
+          .col-main { font-size: 11pt; font-family: Arial, sans-serif; text-align: center; }
+
           h1 { text-align: center; color: #333; }
           h2 { color: #333; margin: 20px 0 10px 0; }
-          .resumen { background: #f9f9f9; padding: 15px; margin: 20px 0; border: 1px solid #ddd; }
-          .formulario { margin: 20px 0; }
-          .pregunta { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
-          .sin-evaluar { background-color: #fff3cd; }
-          .evaluada { background-color: #d4edda; }
+
           @media print {
             body { margin: 0; }
             .no-print { display: none; }
+            @page {
+              size: landscape;   /* horizontal */
+              margin: 1.5cm;
+
+              /* Pie de página con numeración */
+              @bottom-center {
+                content: "Página " counter(page) " de " counter(pages); /* Numeración de páginas depende del explorador funciona o no */
+                font-family: Arial, sans-serif;
+                font-size: 9pt;
+                color: #555;
+              }
+            }
+
+            .print-scale {
+              transform: scale(0.85); /* Ajusta escla según sea necesario */
+              transform-origin: top left;
+            }
           }
         </style>
       </head>
       <body>
         <h1>Evaluación de Riesgos de Especies</h1>
-        <p style="text-align: center;">Fecha: ${new Date().toLocaleDateString()} - Hora: ${new Date().toLocaleTimeString()}</p>
+        <p style="text-align: center;">
+          Fecha: ${new Date().toLocaleDateString()} - Hora: ${new Date().toLocaleTimeString()}
+        </p>
 
-        {/* Resumen de Resultados */}
-        ${mostrarResultados && resultados ? `
-          <div class="resumen">
-            <h2>Resumen General</h2>
-            <p><strong>Puntos obtenidos:</strong> ${resultados.puntosObtenidos} de ${resultados.totalPreguntas * 3} posibles</p>
-            <p><strong>Preguntas evaluadas:</strong> ${resultados.totalPreguntas} de ${resultados.totalPreguntasDisponibles}</p>
-            <p><strong>Porcentaje:</strong> ${resultados.porcentaje}%</p>
-            <p><strong>Nivel de Riesgo:</strong> ${resultados.nivelRiesgo}</p>
-          </div>
-          
-          <h2>Resultados por Categoría</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Categoría</th>
-                <th>Puntos</th>
-                <th>Preguntas Evaluadas</th>
-                <th>Porcentaje</th>
-                <th>Nivel</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Mapeo de resultados por categoría */}
-              ${Object.entries(resultados.resultadosPorCategoria).map(([categoria, datos]) => {
-                let nivel = 'Bajo';
-                if (parseFloat(datos.porcentaje) > 60) nivel = 'Alto';
-                else if (parseFloat(datos.porcentaje) > 30) nivel = 'Moderado';
-                
-                return `
-                  <tr>
-                    <td>${categoria}</td>
-                    <td>${datos.puntos}</td>
-                    <td>${datos.preguntas} de ${datos.total}</td>
-                    <td>${datos.porcentaje}%</td>
-                    <td>${nivel}</td>
-                  </tr>
-                `;
-              }).join('')}
-              {/* Fin del mapeo de resultados por categoría. Inicio del mapeo de evaluaciones */}
-            </tbody>
-          </table>
-        ` : `
-          <div class="resumen">
-            <h2>Estado de la Evaluación</h2>
-            <p><strong>Estado:</strong> Evaluación en progreso</p>
-            <p><strong>Total de preguntas:</strong> ${Object.keys(evaluaciones).length}</p>
-            <p><strong>Preguntas evaluadas:</strong> ${Object.values(evaluaciones).filter(e => e.valoracion !== '' && e.valoracion !== undefined).length}</p>
-          </div>
-        `}
-        {/* Formulario de Evaluación */}
-        <div class="formulario">
-          <h2>Formulario de Evaluación</h2>
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 20%;">Categoría</th>
-                <th style="width: 40%;">Pregunta</th>
-                <th style="width: 15%;">Valoración</th>
-                <th style="width: 25%;">Información</th>
-                <th style="width: 25%;">Bibliografía</th>
-              </tr>
-            </thead>
-            <tbody>
-            
-            {/* Mapeo de evaluaciones */}
-              ${Object.entries(evaluaciones).map(([key, evaluacion]) => {
-                const estaEvaluada = evaluacion.valoracion !== '' && evaluacion.valoracion !== undefined;
-                const valoracionTexto = evaluacion.valoracion === '0' ? 'No aplica / Sin información (0)' : 
-                                      evaluacion.valoracion === '1' ? 'Riesgo bajo (1)' : 
-                                      evaluacion.valoracion === '2' ? 'Riesgo moderado (2)' : 
-                                      evaluacion.valoracion === '3' ? 'Riesgo alto (3)': 'Sin evaluar';
+        <h2>Preguntas y respuestas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Bloque</th>
+              <th>Subcategoría</th>
+              <th>Área</th>
+              <th>ID</th>
+              <th>Pregunta</th>
+              <th>Valoración</th>
+              <th>Información</th>
+              <th>Bibliografía</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${tablaPreguntas}
+          </tbody>
+        </table>
 
-                return `
-                  <tr class="${estaEvaluada ? 'evaluada' : 'sin-evaluar'}">
-                    <td>${evaluacion.categoria}</td>
-                    <td>${evaluacion.pregunta}</td>
-                    <td>${valoracionTexto}</td>
-                    <td>${evaluacion.informacion || '-'}</td>
-                    <td>${evaluacion.bibliografia || '-'}</td>
-                  </tr>
-                `;
-              }).join('')}
-            </tbody>
-          </table>
-        </div>
-        
         <script>
-          window.onload = function() { 
-            window.print(); 
-          };
+          window.onload = function() { window.print(); };
         </script>
       </body>
       </html>
     `;
 
-    // Abrir ventana nueva para imprimir
-  const ventana = window.open('', '_blank', 'width=800,height=600');
-  if (ventana) {
-    const doc = ventana.document;
-
-    // Crear la estructura base
-    const html = doc.createElement("html");
-    const head = doc.createElement("head");
-    const body = doc.createElement("body");
-
-    // Estilos básicos
-    const style = doc.createElement("style");
-    style.textContent = `
-      body { 
-        font-family: Arial, sans-serif; 
-        padding: 20px; 
-        background: white; 
-        color: black; 
-      }
-    `;
-    head.appendChild(style);
-
-    // Insertar el contenido generado
-    body.innerHTML = htmlReporte;
-
-    html.appendChild(head);
-    html.appendChild(body);
-    doc.replaceChild(html, doc.documentElement);
-
-    // Esperar a que la ventana cargue y luego imprimir
-    setTimeout(() => {
-      ventana.print();
-    }, 100);
-  } else {
-    alert('❌ No se pudo abrir la ventana de impresión. Verifica que no esté bloqueada por el navegador.');
-  }
+    // Abrir ventana nueva para imprimir el reporte
+    const ventana = window.open('', '_blank', 'width=800,height=600');
+    if (ventana) {
+      ventana.document.write(htmlReporte);
+      ventana.document.close();
+    } else {
+      alert('❌ No se pudo abrir la ventana de impresión. Verifica que no esté bloqueada por el navegador.');
+    }
   };
 
-  // Función para exportar JSON
-  const exportarJSON = () => {
-    const dataExport = {
-      evaluaciones,
-      resultados,
-      fechaEvaluacion: new Date().toISOString(),
-      metadatos: {
-        totalPreguntas: Object.keys(evaluaciones).length,
-        preguntasEvaluadas: Object.values(evaluaciones).filter(e => e.valoracion !== '' && e.valoracion !== undefined).length,
-        version: '1.0'
-      }
-    };
+  // Exportar CSV
+  const exportarCSV = () => {
+    const headers = ["Bloque", "id", "Pregunta", "Respuesta", "Información", "Bibliografía"];
+    const rows = questions.map(q => {
+      const ev = evaluaciones[`pregunta_${q.id}`] || {};
+      return [
+        `"${q.category}"`,
+        `"${q.id}"`,
+        `"${q.question}"`,
+        `"${ev.valoracion || "Sin responder"}"`,
+        `"${ev.informacion || "N/A"}"`,
+        `"${ev.bibliografia || "N/A"}"`
+      ];
+    });
 
-    // Crear el blob y el enlace de descarga
-    const blob = new Blob([JSON.stringify(dataExport, null, 2)], { type: 'application/json' });
+    const csvContent = [headers, ...rows].map(e => e.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `evaluacion_riesgos_${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `evaluacion_${new Date().toISOString().split("T")[0]}.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  // Retornar los valores necesarios
+  // Exportar XLSX
+  const exportarXLSX = async () => {
+  const data = [
+    ["Bloque", "id", "Pregunta", "Respuesta", "Información", "Bibliografía"],
+    ...questions.map(q => {
+      const ev = evaluaciones[`pregunta_${q.id}`] || {};
+      return [
+        q.category, 
+        q.id,
+        q.question,
+        ev.valoracion || "Sin responder",
+        ev.informacion || "N/A",
+        ev.bibliografia || "N/A"
+      ];
+    })
+  ];
+
+
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Evaluación");
+
+    data.forEach(row => worksheet.addRow(row));
+
+    // Generar el archivo y descargarlo
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `evaluacion_${new Date().toISOString().split("T")[0]}.xlsx`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  // Exportar JSON
+  const exportarJSON = () => {
+  const dataExport = {
+    preguntas: questions.map(q => {
+      const ev = evaluaciones[`pregunta_${q.id}`] || {};
+      return {
+        bloque: q.category,
+        id: q.id,
+        pregunta: q.question,
+        valoracion: ev.valoracion || "Sin responder",
+        informacion: ev.informacion || "N/A",
+        bibliografia: ev.bibliografia || "N/A"
+      };
+    }),
+    resultados,
+    fecha: new Date().toISOString()
+  };
+
+    const blob = new Blob([JSON.stringify(dataExport, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `evaluacion_${new Date().toISOString().split("T")[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  // Retornar funciones y estados necesarios para el componente que use este hook
   return {
     evaluaciones,
     resultados,
     mostrarResultados,
     actualizarEvaluacion,
     calcularResultados,
-    imprimir,
-    exportarJSON
+    exportarJSON,
+    exportarCSV,
+    exportarXLSX,
+    imprimir
   };
-};
+}
+
+export default useRiskCalculator;

@@ -7,7 +7,7 @@ export default function Recursos() {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="container mx-auto px-4 text-center py-10 text-[#475C22]">
+      <div className="container mx-auto px-4 text-center py-10 text-green-800">
         <h1 className="text-4xl font-bold">
           Normatividad para el Manejo de Insectos en Colombia
         </h1>
@@ -17,8 +17,8 @@ export default function Recursos() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Sección de descripción de la normatividad */}
           <section className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4">Descripción</h2>
-            <p className="text-[#475C22] leading-relaxed mb-4 text-justify">
+            <h2 className="text-3xl font-bold text-green-800 mb-4">Descripción</h2>
+            <p className="text-green-800 leading-relaxed mb-4 text-justify">
               En Colombia, el uso de insectos en producción animal, alimentación,
               agricultura y salud se encuentra en proceso de formalización normativa.
               Durante los últimos meses, distintas instituciones, entre ellas el{" "}
@@ -26,7 +26,7 @@ export default function Recursos() {
               buscan incluir a los insectos dentro de los marcos legales existentes en
               bioseguridad, inocuidad alimentaria, producción animal y medio ambiente.
             </p>
-            <p className="text-[#475C22] leading-relaxed text-justify">
+            <p className="text-green-800 leading-relaxed text-justify">
               Aunque no existe aún una normatividad específica para insectos en todos
               los usos posibles, actualmente se aplican criterios derivados de normas
               sobre alimentos, especies no convencionales, bioinsumos, farmacología y
@@ -36,10 +36,10 @@ export default function Recursos() {
 
 {/* Estado actual del desarrollo normativo */}
           <section className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4">
+            <h2 className="text-3xl font-bold text-green-800 mb-4">
               Estado del Desarrollo
             </h2>
-            <p className="text-[#475C22] leading-relaxed text-justify mb-6">
+            <p className="text-green-800 leading-relaxed text-justify mb-6">
               Actualmente se están desarrollando mesas de trabajo para abordar desde la
               legislación el uso de los insectos a partir del concepto de{" "}
               <strong>Servicios Ecosistémicos</strong> contemplado en la{" "}
@@ -55,7 +55,7 @@ export default function Recursos() {
             
             {/* Video integrado */}
             <div className="border-t pt-6">
-              <h3 className="text-xl font-bold text-[#475C22] mb-3 text-center">
+              <h3 className="text-xl font-bold text-green-800 mb-3 text-center">
                 Normograma sobre Insectos en el Marco de los Servicios Ecosistémicos
               </h3>
               <div className="relative flex justify-center">
@@ -82,12 +82,12 @@ export default function Recursos() {
           
           {/* Nueva sección: Normas clave desde JSON - ahora centrada */}
           <section className="bg-white shadow-lg rounded-lg p-6 md:col-span-2">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4 text-center">
+            <h2 className="text-3xl font-bold text-green-800 mb-4 text-center">
               Normas Relevantes
             </h2>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left text-[#475C22]">
-                <thead className="text-xs text-white uppercase bg-[#475C22]">
+              <table className="w-full text-sm text-left text-green-800">
+                <thead className="text-xs text-white uppercase bg-green-800">
                   <tr>
                     <th scope="col" className="px-4 py-3 w-1/4">
                       Norma

@@ -1,32 +1,17 @@
-// Importar Rect
+// Importar React y otros hooks necesarios
 import React, { useState, useRef } from 'react';
+import ProgressPanel from './ProgressPanel';
 
-// Componente para el formulario de evaluación
-const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
+// Componente principal de la forma de evaluación
+const EvaluationForm = ({ 
+  questions, 
+  evaluaciones, 
+  actualizarEvaluacion, 
+  resultados, 
+  mostrarResultados 
+}) => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
   const tableRef = useRef(null);
-
-  // Función para obtener el texto del puntaje
-  const getPuntajeTexto = (valor) => {
-    switch(parseInt(valor)) {
-      case 0: return 'No aplica / sin información disponible';
-      case 1: return 'Riesgo bajo';
-      case 2: return 'Riesgo moderado';
-      case 3: return 'Riesgo alto';
-      default: return '';
-    }
-  };
-
-  // Función para obtener el color del puntaje
-  const getPuntajeColor = (valor) => {
-    switch(parseInt(valor)) {
-      case 0: return 'text-gray-500';
-      case 1: return 'text-green-600';
-      case 2: return 'text-yellow-600';
-      case 3: return 'text-red-600';
-      default: return 'text-gray-500';
-    }
-  };
 
   // Agrupar preguntas por categoría
   const preguntasPorCategoria = questions.reduce((acc, pregunta) => {
@@ -40,7 +25,7 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
   // Obtener categorías
   const categorias = Object.keys(preguntasPorCategoria);
 
-  // Función para navegar a una categoría específica
+  // Navegar a una categoría específica
   const navegarACategoria = (categoria) => {
     setCategoriaSeleccionada(categoria);
     const elemento = document.getElementById(`categoria-${categoria}`);
@@ -59,24 +44,55 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
     ? { [categoriaSeleccionada]: preguntasPorCategoria[categoriaSeleccionada] }
     : preguntasPorCategoria;
 
+  // Función para obtener el color del círculo debajo de la opción según bloque y valor seleccionado
+  const getColor = (bloque, valor) => {
+    if (["Bloque 4", "Bloque 5"].includes(bloque)) {
+      if (valor === "No" || valor === "Alto") return "bg-red-500";
+      if (valor === "Sí" || valor === "Bajo") return "bg-green-500";
+      if (valor === "Medio") return "bg-yellow-500";
+      if (valor === "NS") return "bg-orange-500";
+      if (valor === "NA") return "bg-gray-400";
+      return "bg-gray-300";
+    } else if (bloque === "Bloque 6") {
+      if (valor === "No" || valor === "Bajo") return "bg-red-500";
+      if (valor === "Sí" || valor === "Alto") return "bg-green-500";
+      if (valor === "Medio") return "bg-yellow-500";
+      if (valor === "NS") return "bg-orange-500";
+      if (valor === "NA") return "bg-gray-400";
+      return "bg-gray-300";
+    } else {
+      if (valor === "Sí" || valor === "Alto") return "bg-red-500";
+      if (valor === "No" || valor === "Bajo") return "bg-green-500";
+      if (valor === "Medio") return "bg-yellow-500";
+      if (valor === "NS") return "bg-orange-500";
+      if (valor === "NA") return "bg-gray-400";
+      return "bg-gray-300";
+    }
+  };
+
+  // Progreso global de la evaluación
+  const respondidasGlobal = questions.filter(p => {
+    const key = `pregunta_${p.id}`;
+    const valoracion = evaluaciones[key]?.valoracion;
+    return valoracion !== '' && valoracion !== undefined;
+  }).length;
+  const totalGlobal = questions.length;
+
   return (
     <div className="relative w-full">
-      
-      {/* Navegación por Categorías*/}
+      {/* Progreso global */}
+      <ProgressPanel respondidas={respondidasGlobal} totalPreguntas={totalGlobal} />
+
+      {/* Seleccionar la Navegación por Categorías */}
       <div className="sticky top-0 z-20 bg-white border-b border-gray-200 p-3">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          
-          {/* Título */}
           <h4 className="font-semibold text-gray-900 flex items-center">
             <svg className="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
             </svg>
             Navegación por Categorías
           </h4>
-          
-          {/* Botones de filtrado */}
           <div className="flex flex-wrap gap-2">
-            {/* Botón para mostrar todas */}
             <button
               onClick={() => setCategoriaSeleccionada('')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
@@ -87,8 +103,6 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
             >
               Todas
             </button>
-            
-            {/* Botones para cada categoría */}
             {categorias.map((categoria) => (
               <button
                 key={categoria}
@@ -100,7 +114,9 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                 }`}
               >
                 {categoria}
-                <span className="ml-1.5 bg-white bg-opacity-30 px-1.5 py-0.5 rounded-full text-xs">
+                <span className={`ml-1.5 bg-white bg-opacity-30 px-1.5 py-0.5 rounded-full text-xs ${
+                  categoriaSeleccionada === categoria ? 'text-green-900 font-bold' : 'text-gray-700'
+                }`}>
                   {preguntasPorCategoria[categoria].length}
                 </span>
               </button>
@@ -116,8 +132,6 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
         style={{ height: 'calc(85vh - 120px)' }}
       >
         <table className="w-full border-collapse bg-white">
-          
-          {/* Header de la tabla*/}
           <thead className="sticky top-0 z-10">
             <tr className="bg-gradient-to-r from-green-800 to-green-600 text-white">
               <th className="border border-gray-200 px-3 py-2 text-left font-semibold text-sm">
@@ -158,7 +172,6 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
           <tbody>
             {Object.entries(categoriasFiltradas).map(([categoria, preguntas]) => (
               <React.Fragment key={categoria}>
-                
                 {/* Fila de categoría */}
                 <tr 
                   id={`categoria-${categoria}`}
@@ -168,35 +181,16 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
-                        <h3 className="text-lg font-bold text-gray-800">{categoria}</h3>
+                        <h3 className="text-lg font-bold text-gray-800">
+                          {preguntas[0]?.component ? `${preguntas[0].component} - ` : ""}
+                          {categoria}
+                          {preguntas[0]?.subcategory ? `: ${preguntas[0].subcategory}` : ""}
+                        </h3>
                       </div>
                       <div className="flex items-center space-x-3">
                         <span className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
                           {preguntas.length} pregunta{preguntas.length !== 1 ? 's' : ''}
                         </span>
-                        {/* Progreso de la categoría*/}
-                        {(() => {
-                          const respondidas = preguntas.filter(p => {
-                            const key = `pregunta_${p.id}`;
-                            const valoracion = evaluaciones[key]?.valoracion;
-                            return valoracion !== '' && valoracion !== undefined;
-                          }).length;
-                          const porcentaje = preguntas.length > 0 ? (respondidas / preguntas.length) * 100 : 0;
-                          
-                          return (
-                            <div className="flex items-center space-x-2">
-                              <div className="w-16 bg-gray-200 rounded-full h-2">
-                                <div 
-                                  className="bg-green-500 h-2 rounded-full transition-all duration-300" 
-                                  style={{ width: `${porcentaje}%` }}
-                                ></div>
-                              </div>
-                              <span className="text-xs text-gray-600 font-medium">
-                                {respondidas}/{preguntas.length}
-                              </span>
-                            </div>
-                          );
-                        })()}
                       </div>
                     </div>
                   </td>
@@ -205,17 +199,14 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                 {/* Filas de preguntas */}
                 {preguntas.map((pregunta, index) => {
                   const key = `pregunta_${pregunta.id}`;
-                  //Usar string vacío si no hay valoración
                   const valorActual = evaluaciones[key]?.valoracion || '';
-                  
                   return (
                     <tr key={key} className={`hover:bg-blue-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
-                      
                       {/* Columna Pregunta */}
                       <td className="border border-gray-300 px-2 py-1">
                         <div className="flex items-start space-x-0.5">
                           <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full whitespace-nowrap">
-                            {pregunta.component}{pregunta.id}
+                            {pregunta.id}
                           </span>
                           <div className="flex-1">
                             <p className="text-gray-900 font-medium leading-tight">
@@ -224,7 +215,6 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                           </div>
                         </div>
                       </td>
-
                       {/* Columna Valoración */}
                       <td className="border border-gray-300 px-2 py-1 text-center">
                         <div className="space-y-0.5">
@@ -233,33 +223,20 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                             onChange={(e) => actualizarEvaluacion(key, 'valoracion', e.target.value)}
                             className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 no-print"
                           >
-                            {/* Opción por defecto cuando no ha seleccionado nada */}
                             <option value="" className="text-gray-500">
                               Seleccione una opción
                             </option>
-                            <option value="0">0 - No aplica / Sin información</option>
-                            <option value="1">1 - Riesgo bajo</option>
-                            <option value="2">2 - Riesgo moderado</option>
-                            <option value="3">3 - Riesgo alto</option>
+                            {pregunta.options.map((opcion, idx) => (
+                              <option key={idx} value={opcion}>{opcion}</option>
+                            ))}
                           </select>
-                          
-                          {/* Mostrar valor en impresión */}
-                          <div className="print-only text-center">
-                            <span className="text-base font-bold">{valorActual || 'N/A'}</span>
-                          </div>
-                          
-                          {/* Indicador visual del nivel */}
-                          <div className={`text-xs font-medium ${getPuntajeColor(valorActual)}`}>
-                            {valorActual !== '' && valorActual !== '0' && (
+                          {/* Indicador visual de la valoración */}
+                          <div className="text-xs font-medium">
+                            {valorActual !== '' && (
                               <div className="flex items-center justify-center space-x-1">
-                                <div className={`w-1.5 h-1.5 rounded-full ${
-                                  valorActual === '1' ? 'bg-green-500' :
-                                  valorActual === '2' ? 'bg-yellow-500' : 'bg-red-500'
-                                }`}></div>
-                                <span>{getPuntajeTexto(valorActual).split(' - ')[1]}</span>
+                                <div className={`w-2 h-2 rounded-full ${getColor(pregunta.category, valorActual)}`}></div>
                               </div>
                             )}
-                            {/* Mostrar diferentes estados */}
                             {valorActual === '' && (
                               <div className="text-red-400 text-xs font-medium">
                                 ⚠️ Sin evaluar
@@ -273,7 +250,6 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                           </div>
                         </div>
                       </td>
-
                       {/* Columna Información de Respaldo */}
                       <td className="border border-gray-300 px-2 py-1 no-print">
                         <textarea
@@ -284,7 +260,6 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                           placeholder="Información que respalda la valoración..."
                         />
                       </td>
-
                       {/* Columna Referencias Bibliográficas */}
                       <td className="border border-gray-300 px-2 py-1 no-print">
                         <textarea
@@ -292,7 +267,7 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
                           onChange={(e) => actualizarEvaluacion(key, 'bibliografia', e.target.value)}
                           className="w-full px-2 py-1.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm resize-none"
                           rows="2"
-                          placeholder="Referencias bibliográficas..."
+                          placeholder="Referencias bibliográficas"
                         />
                       </td>
                     </tr>
@@ -302,34 +277,6 @@ const EvaluationForm = ({ questions, evaluaciones, actualizarEvaluacion }) => {
             ))}
           </tbody>
         </table>
-      </div>
-
-      {/* Leyenda*/}
-      <div className="sticky bottom-0 z-20 bg-gray-50 border-t border-gray-200 p-4">
-        <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-          <svg className="w-5 h-5 mr-2 text-green-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          Escala de Valoración
-        </h4>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
-            <span><strong>0:</strong> No aplica / Sin información</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span><strong>1:</strong> Riesgo bajo</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-            <span><strong>2:</strong> Riesgo moderado</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <span><strong>3:</strong> Riesgo alto</span>
-          </div>
-        </div>
       </div>
     </div>
   );

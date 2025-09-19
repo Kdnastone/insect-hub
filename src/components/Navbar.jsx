@@ -26,7 +26,7 @@ export default function Navbar() {
           <li><Link to="/riesgos" className="hover:text-green-200 transition-colors">Riesgos</Link></li>
           <li><Link to="/api" className="hover:text-green-200 transition-colors">API</Link></li>
           <li><Link to="/recursos" className="hover:text-green-200 transition-colors">Recursos</Link></li>
-          <li><Link to="/project" className="hover:text-green-200 transition-colors">Proyecto</Link></li>
+          <li><Link to="/project" className="hover:text-green-200 transition-colors">Sobre la Página</Link></li>
         </ul>
 
         {/* Botón hamburguesa: visible solo en móvil y pantallas pequeñas */}

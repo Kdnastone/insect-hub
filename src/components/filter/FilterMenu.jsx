@@ -3,7 +3,7 @@ const FilterMenu = ({ orders, selectedOrder, setSelectedOrder, origins, selected
   return (
     <div className="mb-6">
       {/* Título del filtro por orden */}
-      <h2 className="text-xl font-semibold text-[#475C22] mb-2">Filtrar por Orden</h2>
+      <h2 className="text-xl font-semibold text-green-800 mb-2">Filtrar por Orden</h2>
       
       {/* Botones de filtro para orden */}
       <div className="flex flex-wrap gap-2 mb-4">
@@ -12,8 +12,8 @@ const FilterMenu = ({ orders, selectedOrder, setSelectedOrder, origins, selected
           onClick={() => setSelectedOrder("Todos")}
           className={`px-3 py-1 rounded-full border ${
             selectedOrder === "Todos"
-              ? "bg-[#475C22] text-white"
-              : "bg-white text-[#475C22] border-[#475C22]"
+              ? "bg-green-800 text-white"
+              : "bg-white text-green-800 border-green-800"
           }`}
         >
           Todos
@@ -26,8 +26,8 @@ const FilterMenu = ({ orders, selectedOrder, setSelectedOrder, origins, selected
             onClick={() => setSelectedOrder(order)}
             className={`px-3 py-1 rounded-full border ${
               selectedOrder === order
-                ? "bg-[#475C22] text-white"
-                : "bg-white text-[#475C22] border-[#475C22]"
+                ? "bg-green-800 text-white"
+                : "bg-white text-green-800 border-green-800"
             }`}
           >
             {order}
@@ -36,7 +36,7 @@ const FilterMenu = ({ orders, selectedOrder, setSelectedOrder, origins, selected
       </div>
 
       {/* Título del filtro por origen */}
-      <h2 className="text-xl font-semibold text-[#475C22] mb-2">Filtrar por Origen</h2>
+      <h2 className="text-xl font-semibold text-green-800 mb-2">Filtrar por Origen</h2>
 
       {/* Botones de filtro por origen */}
       <div className="flex flex-wrap gap-2">
@@ -44,8 +44,8 @@ const FilterMenu = ({ orders, selectedOrder, setSelectedOrder, origins, selected
           onClick={() => setSelectedOrigin("Todos")}
           className={`px-3 py-1 rounded-full border ${
             selectedOrigin === "Todos"
-              ? "bg-[#475C22] text-white"
-              : "bg-white text-[#475C22] border-[#475C22]"
+              ? "bg-green-800 text-white"
+              : "bg-white text-green-800 border-green-800"
           }`}
         >
           Todos
@@ -57,8 +57,8 @@ const FilterMenu = ({ orders, selectedOrder, setSelectedOrder, origins, selected
             onClick={() => setSelectedOrigin(origin)}
             className={`px-3 py-1 rounded-full border ${
               selectedOrigin === origin
-                ? "bg-[#475C22] text-white"
-                : "bg-white text-[#475C22] border-[#475C22]"
+                ? "bg-green-800 text-white"
+                : "bg-white text-green-800 border-green-800"
             }`}
           >
             {origin}

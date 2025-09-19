@@ -3,7 +3,7 @@ import profileImage from '../assets/profile.jpg';
 export const Project = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
-      <div className="container mx-auto px-4 text-center py-10 text-[#475C22]">
+      <div className="container mx-auto px-4 text-center py-10 text-green-800">
         <h1 className="text-4xl font-bold">Sobre la Desarrolladora</h1>
       </div>
 
@@ -20,12 +20,12 @@ export const Project = () => {
 
           {/* Descripción */}
           <section className="bg-white shadow-lg rounded-lg p-6">
-            <h2 className="text-3xl font-bold text-[#475C22] mb-4">Presentación</h2>
-            <p className="text-[#475C22] leading-relaxed text-justify mb-4">
+            <h2 className="text-3xl font-bold text-green-800 mb-4">Presentación</h2>
+            <p className="text-green-800 leading-relaxed text-justify mb-4">
               Este trabajo forma parte de la etapa práctica del SENA, requisito para obtener el título de <strong>Tecnóloga en Análisis y Desarrollo de Software</strong>.
               Es un proyecto educativo y de divulgación científica que conecta el mundo del desarrollo web con el conocimiento biológico de los insectos de interés en Colombia.
             </p>
-            <p className="text-[#475C22] leading-relaxed text-justify">
+            <p className="text-green-800 leading-relaxed text-justify">
               Fue desarrollado por <strong>Sandra Cadena</strong>, bióloga con énfasis en control biológico, apasionada por los artrópodos, la investigación aplicada y la sostenibilidad.
               Actualmente se encuentra enfocada en la creación de soluciones tecnológicas orientadas a la agricultura, la educación y la bioeconomía, integrando herramientas digitales
               con el conocimiento científico y territorial.
