@@ -10,9 +10,9 @@ export default function Navbar() {
     try {
       console.log("handleTranslate called", { host: window.location.host, href: window.location.href });
 
-      // Si estás en localhost/WSL/puerto local, usa el host de producción
+      // Detectar si estamos en local o en producción
       const isLocal = /localhost|127\.0\.0\.1/.test(window.location.hostname);
-      const prodHost = "insect-hub-netlify-app"; // <- reemplaza si tu dominio de Netlify es distinto
+      const prodHost = "insect-hub-netlify-app";
       const rawHost = isLocal ? prodHost : window.location.host.replace(/\./g, "-");
 
       const translatedHost = `${rawHost}.translate.goog`;
@@ -24,7 +24,7 @@ export default function Navbar() {
       const url = `https://insect--hub-netlify-app.translate.goog/?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=es&_x_tr_pto=wapp`;
 
       if (openInNewTab) window.open(url, "_blank");
-      else window.location.href = url; // redirige en la misma pestaña
+      else window.location.href = url;
     } catch (err) {
       console.error(err);
     }
