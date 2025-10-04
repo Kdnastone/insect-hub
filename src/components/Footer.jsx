@@ -8,10 +8,10 @@ import {
 
 const Footer = () => {
   return (
-    /* Footer más compacto */
-    <footer className="fixed bottom-0 left-0 w-full bg-green-800 text-white py-1 sm:py-2 z-40">
-      <div className="w-full max-w-screen-xl mx-auto px-2 sm:px-4">
-        <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-1 sm:gap-2">
+   /* Footer más visible en móviles y compactado en pantallas grandes */
+    <footer className="fixed bottom-0 left-0 w-full bg-green-800 text-white py-2 sm:py-2 z-50 safe-area-inset-bottom">
+      <div className="w-full max-w-screen-xl mx-auto px-3 sm:px-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-2">
 
           {/* Información institucional */}
           <div className="text-center sm:text-left">

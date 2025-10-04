@@ -1,6 +1,6 @@
 //Importar React y hooks necesarios
 import { useState } from "react";
-import  especies  from "../../data/especies";
+import { especies } from '/src/data/especies.js'
 import { fichas } from "../../data/fichas";
 import SpeciesCard from "./SpeciesCard";
 import FilterMenu from "./FilterMenu";

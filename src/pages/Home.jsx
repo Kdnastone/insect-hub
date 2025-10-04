@@ -15,12 +15,12 @@ export default function Home() {
       {/* Enlaces externos responsive */}
       <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 lg:gap-10 p-4 sm:p-6">
         <a
-          href="https://www.gbif.org/es/"
+          href="https://www.gbif.org/dataset/fe8a949e-ea81-4a58-8871-e50032e11415"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 sm:px-8 lg:px-10 py-3 sm:py-4 bg-green-800 text-white rounded-lg hover:bg-[#79a72a] transition-colors text-base sm:text-lg lg:text-xl text-center"
         >
-          Explorar en GBIF
+          Explorar datos del MADS en GBIF
         </a>
 
         <a
@@ -29,7 +29,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="px-6 sm:px-8 lg:px-10 py-3 sm:py-4 bg-green-800 text-white rounded-lg hover:bg-[#79a72a] transition-colors text-base sm:text-lg lg:text-xl text-center"
         >
-          Conectar con SiB Colombia
+          Explorar datos en SiB Colombia
         </a>
       </div>
     </div>

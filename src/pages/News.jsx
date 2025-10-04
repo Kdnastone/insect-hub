@@ -4,7 +4,6 @@ import { CalendarDays, Rocket, BookOpen, FileText } from "lucide-react";
 
 // Importar los componentes de cada pestaña
 import ProyectosTab from "../components/tabs/ProyectosTab";
-import NormatividadTab from "../components/tabs/NormatividadTab";
 import EventosTab from "../components/tabs/EventosTab";
 import PublicacionesTab from "../components/tabs/PublicacionesTab";
 
@@ -17,8 +16,6 @@ export default function News() {
     switch (tab) {
       case "proyectos":
         return <ProyectosTab />;
-      case "normatividad":
-        return <NormatividadTab />;
       case "eventos":
         return <EventosTab />;
       case "publicaciones":
@@ -47,14 +44,6 @@ export default function News() {
           onClick={() => setTab("proyectos")}
         >
           <Rocket className="mr-2 w-4 h-4" /> Proyectos
-        </button>
-        <button 
-          className={`px-3 sm:px-4 py-2 border rounded-md text-green-800 hover:bg-green-100 transition-colors text-sm sm:text-base flex items-center justify-center ${
-            tab === "normatividad" ? "bg-green-100 border-green-300" : "border-gray-300"
-          }`} 
-          onClick={() => setTab("normatividad")}
-        >
-          <FileText className="mr-2 w-4 h-4" /> Normatividad
         </button>
         <button 
           className={`px-3 sm:px-4 py-2 border rounded-md text-green-800 hover:bg-green-100 transition-colors text-sm sm:text-base flex items-center justify-center ${
