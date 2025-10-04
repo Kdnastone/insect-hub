@@ -21,8 +21,8 @@ function App() {
       <div className="min-h-screen">
         <Navbar />
 
-        {/* Contenido principal */}
-        <main className="pt-16 pb-20 sm:pb-24">
+        {/* Contenido principal: flex-1 para empujar el footer al final */}
+        <main className="flex-1 pt-16 pb-28 sm:pb-32">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/quienes-somos" element={<QuienesSomos />} />

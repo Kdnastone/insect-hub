@@ -1,4 +1,4 @@
-//Importar los react-icons
+// importar fa iconos necesarios
 import {
   FaGithub,
   FaFacebook,
@@ -8,9 +8,12 @@ import {
 
 const Footer = () => {
   return (
-   /* Footer más visible en móviles y compactado en pantallas grandes */
-    <footer className="fixed bottom-0 left-0 w-full bg-green-800 text-white py-2 sm:py-2 z-50 safe-area-inset-bottom">
-      <div className="w-full max-w-screen-xl mx-auto px-3 sm:px-4">
+    /* En móviles: relativo (en flujo). En sm+: fixed abajo */
+    <footer
+      className="relative sm:fixed bottom-0 left-0 w-full bg-green-800 text-white z-50 overflow-visible"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom, 12px)' }}
+    >
+      <div className="w-full max-w-screen-xl mx-auto px-3 sm:px-4 py-3 sm:py-2 min-h-[64px] sm:min-h-[48px]">
         <div className="flex flex-col sm:flex-row sm:justify-between items-center gap-2 sm:gap-2">
 
           {/* Información institucional */}
