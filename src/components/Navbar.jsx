@@ -1,15 +1,38 @@
-// importar React y otros módulos necesarios
+// importar React y hooks
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import CINAT from "../assets/CINAT.png"; 
+import CINAT from "../assets/CINAT.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleTranslate = (lang = "en", openInNewTab = true) => {
+    try {
+      console.log("handleTranslate called", { host: window.location.host, href: window.location.href });
+
+      // Si estás en localhost/WSL/puerto local, usa el host de producción
+      const isLocal = /localhost|127\.0\.0\.1/.test(window.location.hostname);
+      const prodHost = "insect-hub-netlify-app"; // <- reemplaza si tu dominio de Netlify es distinto
+      const rawHost = isLocal ? prodHost : window.location.host.replace(/\./g, "-");
+
+      const translatedHost = `${rawHost}.translate.goog`;
+      const pathname = window.location.pathname || "/";
+      const search = window.location.search || "";
+      const hash = window.location.hash || "";
+      const params = `_x_tr_sl=es&_x_tr_tl=${encodeURIComponent(lang)}&_x_tr_hl=es&_x_tr_pto=wapp`;
+      const sep = search ? "&" : "?";
+      const url = `https://insect--hub-netlify-app.translate.goog/?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=es&_x_tr_pto=wapp`;
+
+      if (openInNewTab) window.open(url, "_blank");
+      else window.location.href = url; // redirige en la misma pestaña
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <nav className="bg-green-800 text-white px-4 sm:px-6 py-3 shadow-md fixed top-0 w-full z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        
         {/* Logo + título */}
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-opacity">
           <img src={CINAT} alt="Logo CINAT UNAL" className="h-8 sm:h-10 w-auto" />
@@ -29,18 +52,30 @@ export default function Navbar() {
           <li><Link to="/project" className="hover:text-green-200 transition-colors">Sobre la Página</Link></li>
         </ul>
 
-        {/* Botón hamburguesa: visible solo en móvil y pantallas pequeñas */}
+        {/* Botón traducir para desktop (compacto) */}
+        <button
+          onClick={() => handleTranslate("en", false)}
+          className="hidden md:inline-flex ml-0 bg-white text-green-800 px-2 py-0.5 rounded text-sm h-8 items-center justify-center hover:opacity-90 transition"
+          aria-label="Traducir a Inglés"
+        >
+          Traducir
+        </button>
+
+        {/* Botón traducir para móvil (pequeño): visible solo en < md */}
+        <button
+          onClick={() => handleTranslate("en", false)}
+          className="md:hidden ml-2 bg-white text-green-800 w-8 h-8 p-0.5 rounded flex items-center justify-center text-xs hover:opacity-90 transition"
+          aria-label="Traducir a Inglés"
+        >
+          EN
+        </button>
+
+        {/* Botón hamburguesa */}
         <button
           className="md:hidden text-white focus:outline-none p-2"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             {isOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -52,9 +87,6 @@ export default function Navbar() {
 
       {/* Menú móvil desplegable */}
       {isOpen && (
-        // Contenedor del menú móvil, se agrega pb-16 en el contenedor y pb-8 en la lista
-        // asegurando que haya suficiente espacio en la parte inferior del menú móvil 
-        // para evitar que la barra de navegación del navegador tape las opciones cuando aparece al hacer hover.
         <div className="md:hidden mt-4 pb-16 border-t border-green-700 max-h-screen overflow-y-auto">
           <ul className="flex flex-col space-y-3 pt-4 text-sm pb-8">
             <li><Link to="/" className="block py-2  hover:bg-green-400  hover:text-black transition-colors" onClick={() => setIsOpen(false)}>Inicio</Link></li>
@@ -66,6 +98,14 @@ export default function Navbar() {
             <li><Link to="/api" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>API</Link></li>
             <li><Link to="/recursos" className="block py-2 hover:bg-green-400  hover:text-black transition-colors" onClick={() => setIsOpen(false)}>Normatividad</Link></li>
             <li><Link to="/project" className="block py-2 hover:bg-green-400  hover:text-black  transition-colors" onClick={() => setIsOpen(false)}>Sobre la página</Link></li>
+            <li>
+              <button
+                onClick={() => handleTranslate("en")}
+                className="block w-full text-left py-2 hover:bg-green-400 hover:text-black transition-colors"
+              >
+                Traducir a Inglés
+              </button>
+            </li>
           </ul>
         </div>
       )}
