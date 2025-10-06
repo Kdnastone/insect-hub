@@ -260,7 +260,7 @@ export const fichas = [
   {
     "id": 6,
     "nombreCientifico": "Gromphadorhina portentosa",
-    "nombreComun": "Cucaracha de Madagascar Silvadora",
+    "nombreComun": "Cucaracha de Madagascar Silbadora",
     "Reino": "Animalia",
     "filo": "Arthropoda",
     "clase": "Insecta",
@@ -389,7 +389,7 @@ export const fichas = [
   {
     "id": 24,
     "nombreCientifico": "Lucilia sericata",
-    "nombreComun": "Common green bottle fly",
+    "nombreComun": "Mosca verde de la botella",
     "Reino": "Animalia",
     "filo": "Arthropoda",
     "clase": "Insecta",

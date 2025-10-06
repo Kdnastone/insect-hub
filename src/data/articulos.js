@@ -72,7 +72,7 @@ export const publicaciones =[
   {
     "id": 11,
     "titulo": "Consumption of expanded polystyrene by Tenebrio molitor and Zophobas atratus, and use of their meal as feed for Piaractus brachypomus",
-    "autores": "MF Bonilla-Amaya, AP Muñoz-Ramírez, FA Aguilar-Aguilar",
+    "autores": "MF Bonilla-Amaya, AP Muñoz-Ramírez, FA Aguilar-Aguilar, KB Barragán-Fonseca",
     "year": 2024,
     "vinculo": "https://ojs.alpa.uy/index.php/ojs_files/article/view/3310"
   },

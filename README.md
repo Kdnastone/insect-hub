@@ -45,9 +45,7 @@ Este proyecto está dirigido a:
 
 ## 🚀 Enlaces clave
 - [🌐 Aplicación web desplegada en Netlify](https://insect-hub.netlify.app/)  
-- <span className="underline">
-  [🔗 API pública de algunos de los insectos introducidos en Colombia en Render](https://insectapi.onrender.com/especies/)  
-  </span> 
+- [🔗 API pública de algunos de los insectos introducidos en Colombia en Render](https://insectapi.onrender.com/especies/)  
 - [📁 Repositorio del proyecto en GitHub](https://github.com/Kdnastone/insect-hub)  
 
 ---
