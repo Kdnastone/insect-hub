@@ -1076,7 +1076,7 @@ export const especies = [
   },
   {
     "id": 36,
-    "nombreCientifico": "Camponotus mus",
+    "nombreCientifico": "Camponotus indianus",
     "nombreComun": "Hormiga carpintera",
     "Reino": "Animalia",
     "filo": "Arthropoda",
