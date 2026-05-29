@@ -60,11 +60,6 @@ const normas = [
     "Enlace": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=344"
   },
   {
-    "Norma": "Decreto 3075 de 1997",
-    "Descripcion": "Por la cual se reglamenta parcialmente la Ley 9 de 1979 y se dictan otras disposiciones.",
-    "Enlace": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=3337"
-  },
-  {
     "Norma": "Resolución 599 de 1998",
     "Descripcion": "Por la cual se adopta el formulario único para solicitud, modificación y renovación del Registro Sanitario para los productos alimenticios y se establece la nomenclatura para la expedición de Registro Sanitario de los alimentos de fabricación nacional y de los importados.",
     "Enlace": "https://www.invima.gov.co/sites/default/files/normatividad/normatividad-interna/Resoluciónes/alimentos/Resolución_599_1998.pdf"
